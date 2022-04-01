@@ -1,7 +1,7 @@
 const RECIPE = 'recipe';
 const RECIPE_ID = 'recipeId'
 const RECIPE_HEADING = 'recipe__heading';
-const RECIPE_HEADING_ID = 'recipesHeadingId';
+const RECIPE_HEADING_ID = 'recipeHeadingId';
 const RECIPE_BTN = 'recipe__button';
 const RECIPE_BTN_ID = 'recipeButtonID';
 const RECIPE_ICONS = ['fa-solid', 'fa-arrow-up-right-from-square'];
@@ -20,7 +20,7 @@ export class Recipe {
     };
 
     createHTMLElements() {
-        this.recipeWrapper = this.createHtmlElement(DIV, RECIPE.RECIPE_ID);
+        this.recipeWrapper = this.createHtmlElement(DIV, RECIPE,RECIPE_ID);
         this.h2Element = this.createHtmlElement(H2, RECIPE_HEADING, RECIPE_HEADING_ID);
         this.recipeBtn = this.createHtmlElement(DIV, RECIPE_BTN, RECIPE_BTN_ID);
         this.icon = document.createElement(I);
