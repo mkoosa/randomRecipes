@@ -4,10 +4,10 @@ export class Common {
             return
         };
 
-        this.element = this.#bindElement(elementId)
+        this.element = this.bindElement(elementId)
     };
 
-    #bindElement(elementId) {
+    bindElement(elementId) {
         const element = document.getElementById(elementId);
         if (!element) {
             throw new Error(`${element} doesn't exist`)

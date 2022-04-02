@@ -7,7 +7,7 @@ import {
 
 const RECIPES_ID = 'recipes';
 const URL = 'https://themealdb.com/api/json/v1/1/random.php';
-const recipesAmount = 8;
+const recipesAmount = 4;
 
 export class Recipes extends Common {
     constructor() {
@@ -19,11 +19,10 @@ export class Recipes extends Common {
 
     bindElements() {
         this.dishes = this.bindElement(RECIPES_ID);
-
     }
 
     createRecipes() {
-        for (let i = 0; i < recipesAmount; i++){
+        for (let i = 0; i < recipesAmount; i++) {
             this.createRandomRecipe();
         }
 
@@ -57,14 +56,23 @@ export class Recipes extends Common {
         fetch(URL)
             .then((res) => res.json())
             .then(data => {
-                const { strMealThumb, strInstructions, strMeal } = data.meals[0];
-                const { h2Element, image, paragraph } = recipe;
-                
+                const {
+                    strMealThumb,
+                    strInstructions,
+                    strMeal
+                } = data.meals[0];
+                const {
+                    h2Element,
+                    image,
+                    paragraph
+                } = recipe;
+
                 h2Element.textContent = strMeal;
                 image.src = strMealThumb
                 paragraph.textContent = strInstructions;
-                
+
             })
+            .catch(error => console.error('Error:', error));
 
     }
 
