@@ -20,6 +20,7 @@ export class Recipes extends Common {
         this.createRandomRecipes();
         this.randomRecipesDetails = [];
         this.createNrOfIdFrontRecipe();
+        
     }
 
     bindElements() {
@@ -72,10 +73,11 @@ export class Recipes extends Common {
 
     getRandomData(frontElements) {
         fetch(URL)
-            .then((res) => res.json())
-            .then(data => {
-                const recipeDetails = data.meals[0]
-                const {
+        .then((res) => res.json())
+        .then(data => {
+            
+            const recipeDetails = data.meals[0]
+            const {
                     strMealThumb,
                     strInstructions,
                     strMeal
@@ -84,13 +86,20 @@ export class Recipes extends Common {
                 
                 const {
                     frontHeading,
-
+                    
                 } = frontElements;
                 
                 this.getDishName(frontHeading, strMeal);
+                this.saveRecipesInLocalStorage();
             })
             .catch(error => console.error('Error:', error));
     }
+    
+        saveRecipesInLocalStorage() {
+            localStorage.setItem('array', JSON.stringify(this.randomRecipesDetails));
+            
+        }
 }
 
 const recipes = new Recipes();
+
