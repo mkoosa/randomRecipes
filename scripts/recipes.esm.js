@@ -6,6 +6,9 @@ import {
     FrontRecipe
 } from "./FrontRecipe.esm.js";
 
+
+import { FRONT_CLASS } from "./FrontRecipe.esm.js";
+
 const RECIPES_ID = 'recipes';
 const URL = 'https://themealdb.com/api/json/v1/1/random.php';
 const RECIPES_AMOUNT = 4;
@@ -14,9 +17,9 @@ export class Recipes extends Common {
     constructor() {
         super();
         this.bindElements();
-        // this.recipes = [];
         this.createRandomRecipes();
-
+        this.randomRecipesDetails = [];
+        this.createNrOfIdFrontRecipe();
     }
 
     bindElements() {
@@ -27,7 +30,13 @@ export class Recipes extends Common {
         for (let i = 0; i < RECIPES_AMOUNT; i++) {
             this.createRandomRecipe();
         }
+    }
 
+    createNrOfIdFrontRecipe() {
+        const recipes = document.querySelectorAll(`.${FRONT_CLASS}`);
+        recipes.forEach((div, i) => {
+            div.setAttribute('id', `FrontId-${i}`);
+        })
     }
 
     createRandomRecipe() {
@@ -37,10 +46,9 @@ export class Recipes extends Common {
     createFrontRecipeHtmlElements() {
         const frontRecipe = new FrontRecipe();
         if (!frontRecipe) {
-            throw new Error (`${frontRecipe} doesn't exist`)
+            throw new Error(`${frontRecipe} doesn't exist`)
         }
 
-        console.log(frontRecipe);
         const {
             recipeFront,
             frontHeading,
@@ -56,12 +64,10 @@ export class Recipes extends Common {
         btn.appendChild(frontIcon);
         btn.appendChild(frontParagraph).textContent = 'open recipe';
         this.getRandomData(frontRecipe);
-
     }
 
     getDishName(element, dishName) {
         element.textContent = dishName;
-
     }
 
     getRandomData(frontElements) {
@@ -74,24 +80,17 @@ export class Recipes extends Common {
                     strInstructions,
                     strMeal
                 } = recipeDetails;
-
+                this.randomRecipesDetails.push(recipeDetails);
+                
                 const {
                     frontHeading,
 
                 } = frontElements;
-                console.log(frontHeading)
-
+                
                 this.getDishName(frontHeading, strMeal);
-
-
             })
             .catch(error => console.error('Error:', error));
-
     }
-
-
-
 }
 
 const recipes = new Recipes();
-
