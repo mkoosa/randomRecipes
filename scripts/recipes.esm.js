@@ -9,22 +9,20 @@ import {
 
 import { FRONT_CLASS } from "./FrontRecipe.esm.js";
 
+
 const RECIPES_ID = 'recipes';
 const URL = 'https://themealdb.com/api/json/v1/1/random.php';
-const RECIPES_AMOUNT = 4;
+const RECIPES_AMOUNT = 7;
+
 
 export class Recipes extends Common {
     constructor() {
         super();
-        this.bindElements();
-        this.createRandomRecipes();
-        this.randomRecipesDetails = [];
-        this.createNrOfIdFrontRecipe();
-        
-    }
-
-    bindElements() {
         this.recipes = this.bindElement(RECIPES_ID);
+        this.createRandomRecipes();
+        this.createNrOfIdFrontRecipe();
+        this.randomRecipesDetails = [];
+        
     }
 
     createRandomRecipes() {
@@ -46,6 +44,7 @@ export class Recipes extends Common {
 
     createFrontRecipeHtmlElements() {
         const frontRecipe = new FrontRecipe();
+
         if (!frontRecipe) {
             throw new Error(`${frontRecipe} doesn't exist`)
         }
@@ -62,6 +61,7 @@ export class Recipes extends Common {
         const front = this.recipes.appendChild(recipeFront);
         front.appendChild(frontHeading);
         const btn = front.appendChild(frontBtn);
+       
         btn.appendChild(frontIcon);
         btn.appendChild(frontParagraph).textContent = 'open recipe';
         this.getRandomData(frontRecipe);
