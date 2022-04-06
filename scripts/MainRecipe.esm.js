@@ -12,11 +12,12 @@ import {
 } from "./FrontRecipe.esm.js";
 
 
-const MAIN_ID = 'mainId'
+export const MAIN_ID = 'mainId'
 
 const MAIN_HEADER = 'main__header';
 const HEADER_HEADING = 'header__heading';
 const HEADER_ICON = ['fa-solid', 'fa-x', 'header__icon'];
+export const HEADER_ICON_ID = 'close'
 
 const MAIN_CONTENT = 'main__content';
 const CONTENT_WRAPPER = 'content__wrapper';
@@ -56,6 +57,7 @@ export class MainRecipe extends Common {
         this.mainHeader = this.frontRecipe.createHtmlElement(DIV, MAIN_HEADER);
         this.headerHeading = this.frontRecipe.createHtmlElement(H2, HEADER_HEADING);
         this.headerIcon = document.createElement(I);
+        this.headerIcon.setAttribute('id', HEADER_ICON_ID);
         this.mainContent = this.frontRecipe.createHtmlElement(DIV, MAIN_CONTENT);
         this.contentWrapper = this.frontRecipe.createHtmlElement(DIV, CONTENT_WRAPPER);
         this.contentHeading = this.frontRecipe.createHtmlElement('h3', CONTENT_HEADING);
