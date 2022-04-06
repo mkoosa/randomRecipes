@@ -25,6 +25,15 @@ class OpenedRecipe {
 
     numberOfElement(element) {
         element = Number(element[element.length - 1]);
+        console.log(element)
+        this.getDetailsToDisplay(element);
+    }
+
+    getDetailsToDisplay(number) {
+        const details = JSON.parse(localStorage.getItem('array'))[number];
+        console.log(details);
+
+        
 
     }
 
