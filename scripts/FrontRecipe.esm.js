@@ -1,11 +1,11 @@
-export const FRONT_CLASS = 'front';
 const FRONT_HEADING_CLASS = 'front__heading';
-export const FRONT_BTN_CLASS = 'front__button';
 const FRONT_ICONS_CLASS = ['fa-solid', 'fa-arrow-up-right-from-square'];
 const FRONT_PARAGRAPH_CLASS = 'front__paragraph';
 
-export const FRONT_BTN_ID = 'frontBtn'
 
+export const FRONT_BTN_CLASS = 'front__button';
+export const FRONT_BTN_ID = 'frontBtn'
+export const FRONT_CLASS = 'front';
 export const DIV = 'div';
 export const H2 = 'h2';
 export const IMAGE = 'img';

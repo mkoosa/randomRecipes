@@ -1,6 +1,4 @@
-import {
-    Common
-} from "./Common.esm.js";
+
 import {
     FrontRecipe,
     DIV,
@@ -8,29 +6,29 @@ import {
     IMAGE,
     I,
     P,
-    FRONT_BTN_ID
 } from "./FrontRecipe.esm.js";
 
 
-export const MAIN_ID = 'mainId'
+const MAIN = 'main';
 
 const MAIN_HEADER = 'main__header';
 const HEADER_HEADING = 'header__heading';
 const HEADER_ICON = ['fa-solid', 'fa-x', 'header__icon'];
-export const HEADER_ICON_ID = 'close'
 
 const MAIN_CONTENT = 'main__content';
 const CONTENT_WRAPPER = 'content__wrapper';
 const CONTENT_HEADING = 'content__heading';
-const CONTENT_PARAGRAPH = 'content__paragraph';
+export const CONTENT_PARAGRAPH = 'content__paragraph';
 
 const CONTENT_IMG_WRAPPER = 'content__img-wrapper';
 const CONTENT_IMG = 'content__img';
 
 const BOTTOM = 'content__bottom';
 const BOTTOM_PARAGRAPH = 'bottom__paragraph';
-const BOTTOM_LIST = 'bottom__list';
-const BOTTOM_ELEMENT = 'bottom__element';
+const SECOND_BOTTOM_PARAGRAPH = 'secondBottom__paragraph';
+
+// const BOTTOM_LIST = 'bottom__list';
+// const BOTTOM_ELEMENT = 'bottom__element';
 
 const CONTENT__FOOTER = 'footer';
 
@@ -43,15 +41,25 @@ const DELETE_ICON = ['fa-solid', 'fa-trash-can'];
 const EDIT_ICON = ['fa-solid', 'fa-pen'];
 const SAVE_ICON = ['fa-solid', 'fa-floppy-disk']
 
-export class MainRecipe extends Common {
+export const HEADER_ICON_ID = 'close'
+export const MAIN_ID = 'mainId'
+
+export class MainRecipe{
     constructor() {
-        super();
+    
         this.frontRecipe = new FrontRecipe();
-        this.mainRecipe = this.bindElement(MAIN_ID);
+        this.mainRecipe = this.createRecipeMain();
         this.createMainRecipeHTMLElements();
         this.createRecipeToOpen();
 
     };
+
+    createRecipeMain() {
+        this.main = this.frontRecipe.createHtmlElement(DIV, MAIN);
+        this.main.setAttribute('id', MAIN_ID);    
+        document.querySelector('body').appendChild(this.main);
+        return this.main;
+    }
 
     createMainRecipeHTMLElements() {
         this.mainHeader = this.frontRecipe.createHtmlElement(DIV, MAIN_HEADER);
@@ -65,9 +73,12 @@ export class MainRecipe extends Common {
         this.contentImgWrapper = this.frontRecipe.createHtmlElement(DIV, CONTENT_IMG_WRAPPER);
         this.contentImg = this.frontRecipe.createHtmlElement(IMAGE, CONTENT_IMG);
         this.contentBottom = this.frontRecipe.createHtmlElement(DIV, BOTTOM);
+
         this.bottomParagraph = this.frontRecipe.createHtmlElement(P, BOTTOM_PARAGRAPH);
-        this.bottomList = this.frontRecipe.createHtmlElement('ul', BOTTOM_LIST);
-        this.bottomElement = this.frontRecipe.createHtmlElement('li', BOTTOM_ELEMENT);
+        this.secondBottomParagraph = this.frontRecipe.createHtmlElement(P, SECOND_BOTTOM_PARAGRAPH);
+
+     
+
         this.contentFooter = this.frontRecipe.createHtmlElement('footer', CONTENT__FOOTER);
         this.deleteBtn = this.frontRecipe.createHtmlElement(DIV);
         this.deleteIcon = document.createElement(I);
@@ -96,8 +107,9 @@ export class MainRecipe extends Common {
 
         const contentBottom = this.mainRecipe.appendChild(this.contentBottom);
         contentBottom.appendChild(this.bottomParagraph);
-        const bottomList = contentBottom.appendChild(this.bottomList);
-        bottomList.appendChild(this.bottomElement);
+        contentBottom.appendChild(this.secondBottomParagraph);
+
+        
 
         const footer = this.mainRecipe.appendChild(this.contentFooter);
         const footerBtnDelete = footer.appendChild(this.deleteBtn);
@@ -121,4 +133,8 @@ export class MainRecipe extends Common {
         this.frontRecipe.createClassesInElement(footerBtnSave, FOOTER_BTN_SAVE)
         this.frontRecipe.createClassesInElement(saveIcon, SAVE_ICON);
     };
+
+
+
+
 }
