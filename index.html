@@ -21,65 +21,26 @@
         <header class="header">
             <div class="header__left">
                 <h1 class="header__heading">Random Recipe Box</h1>
-                <button class="header__btn" type="button">add recipe</button>
+                <div class="header__middle">
+                    <div class="header__button">
+                        <p class="header__paragraph">add<i class="fa-solid fa-square-plus"></i></p>
+                    </div>
+                    <!-- <div class="header__button">
+                        <p class="header__paragraph">search<i class="fa-solid fa-magnifying-glass"></i></p>
+                    </div> -->
+                </div>
+                <div class="header__form">
+                    <input type="text" placeholder="search recipe" class="header__input" id="searchInput">
+                    <i class="fa-solid fa-magnifying-glass" id="loupe"></i>
+                </div>
             </div>
             <div class="header__image-wrapper">
                 <img src="images/silverware-ga82b8284b_1280.png" alt="dishes" class="header__img">
             </div>
         </header>
-        <div class="recipes" id="recipes">
-            <!-- <div class="recipe__front front">
-                <h2 class="front__heading">Lorem, ipsum.</h2>
-                <div class="front__button">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    <p class="front__paragraph">open recipe</p>
-                </div>
-            </div> -->
-            
-        
-    </div>
-    <!-- <div class="recipe__main main" id="mainId">
+        <div class="recipes" id="recipes"></div>
 
-        <div class="main__header header">
-            <h2 class="header__heading">Lorem, ipsum.</h2>
-            <i class="fa-solid fa-x header__icon"></i>
-        </div>
-        <div class="main__content content">
-            <div class="content__wrapper">
-                <h3 class="content__heading">Ingredients</h3>
-                <p class="content__paragraph">Lorem, ipsum dolor.</p>
-                <p class="content__paragraph">Lorem, ipsum dolor.</p>
-                <p class="content__paragraph">Lorem, ipsum dolor.</p>
-            </div>
-            <div class="content__img-wrapper">
-                <img src="images/275771645_3265929490354911_9161895497823093846_n (2).jpg" alt="" class="content__img">
-            </div>
-        </div>
-        <div class="content__bottom bottom">
-            <p class="bottom__paragraph">Instructions</p>
-            <ul class="bottom__list">
-                <li class="bottom__element">Lorem ipsum dolor sit amet elit. Asperiores quo</li>
-                <li class="bottom__element">Lorem ipsum dolor sit amet.</li>
-                <li class="bottom__element">Lorem ipsum dolor sit amet.</li>
-            </ul>
-        </div>
-        <footer class="content__footer footer">
-            <div class="footer__btn footer__btn--delete">
-                <i class="fa-solid fa-trash-can"></i>
-                <p class="footer__paragraph">delete</p>
-            </div>
-            <div class="footer__btn footer__btn--edit">
-                <i class="fa-solid fa-pen"></i>
-                <p class="footer__paragraph">edit</p>
-            </div>
-            <div class="footer__btn footer__btn--save">
-                <i class="fa-solid fa-floppy-disk"></i>
-                <p class="footer__paragraph">save</p>
-            </div>
-
-        </footer>
-    </div> -->
-    <script src="scripts/Main.esm.js" type="module"></script>
+        <script src="scripts/Main.esm.js" type="module"></script>
 
 </body>
 

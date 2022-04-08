@@ -20,10 +20,10 @@ class OpenedRecipe extends Common {
     openButtons() {
         return document.querySelectorAll(FRONT_BTN_ID);
     }
-
+    
     closeButton() {
         this.closeBtn = document.getElementById(HEADER_ICON_ID);
-
+        
     }
     clickEvents() {
         this.openButtons.forEach(btn => {
@@ -49,9 +49,9 @@ class OpenedRecipe extends Common {
     openRecipe() {
         this.mainRecipe = new MainRecipe();
         const {
-            strMeal: name,
-            strInstructions: preparation,
-            strMealThumb: imgRsc
+            strMeal,
+            strInstructions,
+            strMealThumb,
         } = this.details;
         const {
             headerHeading,
@@ -63,13 +63,11 @@ class OpenedRecipe extends Common {
 
         } = this.mainRecipe;
         this.main = this.bindElement(MAIN_ID);
-
-        headerHeading.innerText = name;
-        contentImg.src = imgRsc;
+        headerHeading.innerText = strMeal;
+        contentImg.src = strMealThumb;
         bottomParagraph.innerText = 'Preparation:'
-        secondBottomParagraph.innerText = preparation;
+        secondBottomParagraph.innerText = strInstructions;
         contentHeading.innerText = 'ingredients';
-
         this.displayIngredients(this.details);
 
     }
@@ -77,6 +75,7 @@ class OpenedRecipe extends Common {
     closeRecipe() {
         this.closeBtn.addEventListener('click', () => {
             this.main.remove();
+        
 
         })
     }

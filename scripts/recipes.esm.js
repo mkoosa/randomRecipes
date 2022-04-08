@@ -101,5 +101,5 @@ export class Recipes extends Common {
         }
 }
 
-const recipes = new Recipes();
+ const recipes = new Recipes();
 
