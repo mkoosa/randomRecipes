@@ -9,7 +9,9 @@ import {
     mainRecipe
 } from "./scripts/MainRecipe.esm.js";
 
-import { P } from "./scripts/FrontRecipe.esm.js";
+import {
+    P
+} from "./scripts/FrontRecipe.esm.js";
 
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
@@ -38,10 +40,9 @@ class OpenedRecipe extends Common {
             btn.addEventListener('click', () => {
                 let frontRecipeElement = btn.parentElement.getAttribute(ID);
                 this.numberOfElementToDisplay(frontRecipeElement);
-                this.openRecipe();
+                this.openRecipe(this.details);
                 this.closeButton();
                 this.closeRecipe();
-                console.log(this.mainRecipe);
             })
         });
     }
@@ -55,18 +56,18 @@ class OpenedRecipe extends Common {
         this.details = JSON.parse(localStorage.getItem(KEY_STORAGE))[number];
     }
 
-    openRecipe() {
+    openRecipe(element) {
         this.mainRecipe.createMainRecipeHTMLElements();
         this.mainRecipe.createRecipeToOpen();
         this.main = this.bindElement(MAIN_ID);
-        this.displayIngredients(this.details);
-        this.elementsToDisplay();
+        this.displayIngredients(element);
+        this.elementsToDisplay(element);
     }
 
-    elementsToDisplay() {
-        this.insertContentToElements(this.mainRecipe.headerHeading, this.details.strMeal);
-        this.insertContentToElements(this.mainRecipe.secondBottomParagraph, this.details.strInstructions);
-        this.insertImageToElement(this.mainRecipe.contentImg, this.details.strMealThumb);
+    elementsToDisplay(element) {
+        this.insertContentToElements(this.mainRecipe.headerHeading, element.strMeal);
+        this.insertContentToElements(this.mainRecipe.secondBottomParagraph, element.strInstructions);
+        this.insertImageToElement(this.mainRecipe.contentImg, element.strMealThumb);
         this.insertTextToElement(this.mainRecipe.bottomParagraph, PREPARATION_TXT);
         this.insertTextToElement(this.mainRecipe.contentHeading, INGREDIENTS_TXT);
     }

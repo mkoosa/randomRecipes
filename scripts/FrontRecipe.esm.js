@@ -11,6 +11,7 @@ export const H2 = 'h2';
 export const IMAGE = 'img';
 export const I = 'i';
 export const P = 'p';
+const ID = 'id';
 
 export class FrontRecipe {
     constructor() {
@@ -21,12 +22,9 @@ export class FrontRecipe {
         this.recipeFront = this.createHtmlElement(DIV, FRONT_CLASS);
         this.frontHeading = this.createHtmlElement(H2, FRONT_HEADING_CLASS);
         this.frontBtn = this.createHtmlElement(DIV, FRONT_BTN_CLASS);
-        this.frontBtn.setAttribute('id', FRONT_BTN_ID);
-
+        this.frontBtn.setAttribute(ID, FRONT_BTN_ID);
         this.frontIcon = document.createElement(I);
         this.createClassesInElement(this.frontIcon, FRONT_ICONS_CLASS);
-
-
         this.frontParagraph = this.createHtmlElement(P, FRONT_PARAGRAPH_CLASS);
 
     };
@@ -35,13 +33,11 @@ export class FrontRecipe {
         const domElement = document.createElement(element);
         domElement.classList.add(className);
         return domElement;
-
     };
 
     createClassesInElement(element, icons) {
         icons.forEach((icon) => {
             element.classList.add(icon)
-
         });
 
     }

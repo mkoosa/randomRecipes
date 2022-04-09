@@ -1,5 +1,5 @@
 import {
-    MainRecipe
+    mainRecipe
 } from "./scripts/MainRecipe.esm.js";
 
 import {
@@ -9,86 +9,67 @@ import {
     Common
 } from "./scripts/Common.esm.js";
 
-
-
 const SEARCH_INPUT_ID = 'searchInput';
 const LOUPE_ID = 'loupe';
 const URL = 'https://themealdb.com/api/json/v1/1/search.php?s=';
 const RED = 'red';
 const WHITE = 'white';
+const SUCCEED_TXT = 'search recipe';
+const FAILED_TXT = 'please try once again';
 
 class Search extends Common {
     constructor() {
         super();
-        this.searchInput = this.bindElement(SEARCH_INPUT_ID);
+        this.openedRecipe = openedRecipe;
+        this.inputElement = this.bindElement(SEARCH_INPUT_ID);
         this.loupe = this.bindElement(LOUPE_ID);
         this.eventHandlers();
-        this.openedRecipe = openedRecipe;
     }
-    
+
     getInputText() {
-        this.value = this.searchInput.value;
-        this.changeLoupeColor(this.value);
+        this.searchingRecipe = this.inputElement.value;
+        this.changeLoupeColor(this.searchingRecipe);
     }
-    
+
     sentRequest() {
-        if (!this.value) return;
-        fetch(URL + this.value)
+        fetch(URL + this.searchingRecipe)
             .then(res => res.json())
             .then(data => {
                 if (!!data.meals) {
-                    this.mainRecipe = new MainRecipe();
-                    
-                };
-                this.getDetails(data);
-                if (!!data.meals) {
-                    this.searchInput.placeholder = 'search recipe'
+                    this.mainRecipe = mainRecipe;
+                    this.openedRecipe = openedRecipe;
+                    this.details = data.meals[0];
+                    this.inputElement.placeholder = SUCCEED_TXT;
+                    this.open = true;
+                    this.openRecipe();
+                    this.textProperties(this.open);
+
                 } else {
-                    this.searchInput.placeholder = 'please try once again';
-                    
-                }
-            })
-            this.searchInput.value = '';
-            this.loupe.style.color = WHITE;
-
-        }
-
-        getDetails(value) {
-            if (!value.meals) {
-                return
-        };
-        this.openedRecipe.details = value.meals[0];
-        this.openedRecipe.openRecipe();
-        this.removeSecondMainRecipe();
-    }
-    
-    eventHandlers() {
-        this.searchInput.addEventListener('keyup', () => this.getInputText());
-        this.loupe.addEventListener('click', () => this.sentRequest());
-        
+                    this.open = false;
+                    this.textProperties(this.open);
+                };
+            });
     };
-    
+
+    openRecipe() {
+        this.openedRecipe.openRecipe(this.details);
+        this.openedRecipe.closeButton();
+        this.openedRecipe.closeRecipe();
+    }
+
+    textProperties(value) {
+        value ? this.inputElement.placeholder = SUCCEED_TXT : this.inputElement.placeholder = FAILED_TXT;
+        this.inputElement.value = '';
+        this.loupe.style.color = WHITE;
+    }
+
+    eventHandlers() {
+        this.inputElement.addEventListener('keyup', () => this.getInputText());
+        this.loupe.addEventListener('click', () => this.sentRequest());
+    };
+
     changeLoupeColor(value) {
-        if (value !== '') {
-            this.loupe.style.color = RED;
-        } else {
-            this.loupe.style.color = WHITE;
-        }
-    }
-    
-    removeSecondMainRecipe() {
-        let elements = [... document.querySelectorAll('.main')];
-        elements[elements.length - 2].remove();    
-        this.closeRecipe();
-        
-    }
-    
-    closeRecipe() {
-        let element = document.querySelector('.main');
-        let icon = this.openedRecipe.mainRecipe.headerIcon;
-        icon.addEventListener('click', () => {
-            element.remove();
-        })
+        value ? this.loupe.style.color = RED : this.loupe.style.color = WHITE;
     }
 }
 
