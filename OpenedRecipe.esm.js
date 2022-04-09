@@ -3,38 +3,47 @@ import {
 } from "./scripts/Common.esm.js";
 
 import {
-    MainRecipe,
     MAIN_ID,
-    HEADER_ICON_ID, CONTENT_PARAGRAPH
+    HEADER_ICON_ID,
+    CONTENT_PARAGRAPH,
+    mainRecipe
 } from "./scripts/MainRecipe.esm.js";
 
+import { P } from "./scripts/FrontRecipe.esm.js";
+
 const FRONT_BTN_ID = '#frontBtn';
+const PREPARATION_TXT = 'Preparation:';
+const INGREDIENTS_TXT = 'ingredients';
+const ID = 'id';
+const KEY_STORAGE = 'array';
 
 class OpenedRecipe extends Common {
     constructor() {
         super();
         this.openButtons = this.openButtons();
+        this.mainRecipe = mainRecipe;
         this.clickEvents();
     }
 
     openButtons() {
         return document.querySelectorAll(FRONT_BTN_ID);
     }
-    
+
     closeButton() {
         this.closeBtn = document.getElementById(HEADER_ICON_ID);
-        
     }
+
     clickEvents() {
         this.openButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                this.numberOfElementToDisplay(btn.parentElement.getAttribute('id'));
+                let frontRecipeElement = btn.parentElement.getAttribute(ID);
+                this.numberOfElementToDisplay(frontRecipeElement);
                 this.openRecipe();
                 this.closeButton();
                 this.closeRecipe();
+                console.log(this.mainRecipe);
             })
         });
-
     }
 
     numberOfElementToDisplay(element) {
@@ -43,62 +52,60 @@ class OpenedRecipe extends Common {
     }
 
     getDetailsToDisplay(number) {
-        this.details = JSON.parse(localStorage.getItem('array'))[number];
+        this.details = JSON.parse(localStorage.getItem(KEY_STORAGE))[number];
     }
 
     openRecipe() {
-        this.mainRecipe = new MainRecipe();
-        const {
-            strMeal,
-            strInstructions,
-            strMealThumb,
-        } = this.details;
-        const {
-            headerHeading,
-            contentImg,
-            bottomParagraph,
-            secondBottomParagraph,
-            contentHeading,
-            
-
-        } = this.mainRecipe;
+        this.mainRecipe.createMainRecipeHTMLElements();
+        this.mainRecipe.createRecipeToOpen();
         this.main = this.bindElement(MAIN_ID);
-        headerHeading.innerText = strMeal;
-        contentImg.src = strMealThumb;
-        bottomParagraph.innerText = 'Preparation:'
-        secondBottomParagraph.innerText = strInstructions;
-        contentHeading.innerText = 'ingredients';
         this.displayIngredients(this.details);
+        this.elementsToDisplay();
+    }
 
+    elementsToDisplay() {
+        this.insertContentToElements(this.mainRecipe.headerHeading, this.details.strMeal);
+        this.insertContentToElements(this.mainRecipe.secondBottomParagraph, this.details.strInstructions);
+        this.insertImageToElement(this.mainRecipe.contentImg, this.details.strMealThumb);
+        this.insertTextToElement(this.mainRecipe.bottomParagraph, PREPARATION_TXT);
+        this.insertTextToElement(this.mainRecipe.contentHeading, INGREDIENTS_TXT);
+    }
+
+    insertContentToElements(element, content) {
+        element.innerText = content;
+    }
+
+    insertImageToElement(element, image) {
+        element.src = image;
+    }
+
+    insertTextToElement(element, text) {
+        element.innerText = text;
     }
 
     closeRecipe() {
         this.closeBtn.addEventListener('click', () => {
             this.main.remove();
-        
-
         })
     }
 
     displayIngredients(element) {
         if (element === null) return;
-        let wrapper = this.mainRecipe.contentWrapper;
+        let ingredientsWrapper = this.mainRecipe.contentWrapper;
         let keysArray = Object.keys(element);
-    
+
         keysArray.forEach(key => {
             if (key.includes('strIngredient')) {
                 if (element[key]) {
                     const toDisplay = element[key];
-                    const paragraph = document.createElement('p');
+                    const paragraph = document.createElement(P);
                     paragraph.classList.add(CONTENT_PARAGRAPH);
-                    paragraph.innerText = toDisplay;
-                    wrapper.appendChild(paragraph);
+                    this.insertTextToElement(paragraph, toDisplay)
+                    ingredientsWrapper.appendChild(paragraph);
                 }
             }
         })
     }
-
-
 }
 
 export const openedRecipe = new OpenedRecipe();
