@@ -36,6 +36,10 @@ const SAVE_TXT = 'save';
 const EDIT_TXT = 'edit';
 const ID = 'id';
 const BODY_ELEMENT = 'body';
+const DELETE_BTN_ID = "DELETE";
+const SAVE_BTN_ID = "SAVE";
+const EDIT_BTN_ID = "EDIT";
+
 
 export const CONTENT_PARAGRAPH = 'content__paragraph';
 export const HEADER_ICON_ID = 'close'
@@ -77,6 +81,12 @@ export class MainRecipe{
         this.saveBtn = this.frontRecipe.createHtmlElement(DIV);
         this.saveIcon = document.createElement(I);
         this.saveParagraph = this.frontRecipe.createHtmlElement(P, FOOTER_PARAGRAPH);
+
+        this.createIdAttribute(this.saveBtn, SAVE_BTN_ID);
+        this.createIdAttribute(this.editBtn, EDIT_BTN_ID);
+        this.createIdAttribute(this.deleteBtn, DELETE_BTN_ID);
+
+
     };
     
     createRecipeToOpen() {
@@ -113,6 +123,11 @@ export class MainRecipe{
         saveParagraph.innerText = SAVE_TXT;
         this.frontRecipe.createClassesInElement(footerBtnSave, FOOTER_BTN_SAVE)
         this.frontRecipe.createClassesInElement(saveIcon, SAVE_ICON);
+    };
+
+    createIdAttribute(element, attribute) {
+        element.setAttribute('id', attribute )
+        
     };
 }
 
