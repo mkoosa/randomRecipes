@@ -3,4 +3,5 @@ import { Recipes } from "./recipes.esm.js";
 import { MainRecipe } from "./MainRecipe.esm.js";
 import { openedRecipe } from "../OpenedRecipe.esm.js";
 import { search } from "../Search.esm.js";
+import { DeleteBtn } from "./deleteBtn.esm.js";
 

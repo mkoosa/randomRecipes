@@ -9,7 +9,7 @@ import {
 } from "./FrontRecipe.esm.js";
 
 
-const MAIN = 'main';
+export const MAIN = 'main';
 const MAIN_HEADER = 'main__header';
 const HEADER_HEADING = 'header__heading';
 const HEADER_ICON = ['fa-solid', 'fa-x', 'header__icon'];
@@ -36,7 +36,7 @@ const SAVE_TXT = 'save';
 const EDIT_TXT = 'edit';
 const ID = 'id';
 const BODY_ELEMENT = 'body';
-const DELETE_BTN_ID = "DELETE";
+export const DELETE_BTN_ID = "DELETE";
 const SAVE_BTN_ID = "SAVE";
 const EDIT_BTN_ID = "EDIT";
 

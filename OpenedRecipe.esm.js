@@ -13,11 +13,14 @@ import {
     P
 } from "./scripts/FrontRecipe.esm.js";
 
+import { DeleteBtn } from "./scripts/deleteBtn.esm.js";
+import { recipes } from "./scripts/recipes.esm.js";
+
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
 const INGREDIENTS_TXT = 'ingredients';
 const ID = 'id';
-const KEY_STORAGE = 'array';
+export const KEY_STORAGE = 'array';
 
 class OpenedRecipe extends Common {
     constructor() {
@@ -39,10 +42,14 @@ class OpenedRecipe extends Common {
         this.openButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 let frontRecipeElement = btn.parentElement.getAttribute(ID);
-                this.numberOfElementToDisplay(frontRecipeElement);
+                const number = this.numberOfElementToDisplay(frontRecipeElement);
                 this.openRecipe(this.details);
                 this.closeButton();
                 this.closeRecipe();
+                this.deleteBtn = new DeleteBtn(number);
+                console.log(recipes.randomRecipesDetails);
+                // console.log(this.deleteBtn);
+
             })
         });
     }
@@ -50,6 +57,7 @@ class OpenedRecipe extends Common {
     numberOfElementToDisplay(element) {
         element = Number(element[element.length - 1]);
         this.getDetailsToDisplay(element);
+        return element;
     }
 
     getDetailsToDisplay(number) {
