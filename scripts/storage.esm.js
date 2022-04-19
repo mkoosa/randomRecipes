@@ -6,7 +6,6 @@ export class Storage {
         this.saveRecipesInStorage()
         
     };
-
     saveRecipesInStorage() {
         localStorage.setItem(KEY_STORAGE, JSON.stringify(this.element));
 

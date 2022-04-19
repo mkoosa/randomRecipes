@@ -2,43 +2,47 @@ import {
     recipes
 } from "./recipes.esm.js";
 
-import { Storage } from "./storage.esm.js";
+import {
+    Storage
+} from "./storage.esm.js";
 
-const URL = 'https://themealdb.com/api/json/v1/1/random.php';
-const RECIPES_AMOUNT = 7;
+export const RECIPES_AMOUNT = 7;
+
+export const URL = 'https://themealdb.com/api/json/v1/1/random.php';
 
 export class Random {
     constructor() {
         this.randomRecipesDetails = [];
         this.createRandomRecipes(RECIPES_AMOUNT);
-        
-        
     };
     
-    getRandomData() {
+    getRandomData(i) {
         fetch(URL)
         .then((res) => res.json())
         .then(data => {
+            this.recipes = recipes;
             const recipeDetails = data.meals[0];
             this.randomRecipesDetails.push(recipeDetails);
-            })
-            .catch(error => console.error('Error:', error));
+            this.createStorage();
+            this.displayDishName(i)
+        })
+        .catch(error => console.error('Error:', error));
     };
-        
-        createRandomRecipes(amount) {
-            for (let i = 0; i < amount; i++) {
-                this.getRandomData()
-            };
-           
-            const storage = new Storage(this.randomRecipesDetails);
-            console.log(storage)
+    
+    createRandomRecipes(amount) {
+        for (let i = 0; i < amount; i++) {
+            this.getRandomData(i)
         };
-}
+    };
+    
+    createStorage() {
+        this.storage = new Storage(this.randomRecipesDetails);
+    };
+    
+    displayDishName(i) {
+        this.recipes.getDishName(recipes.recipes.children[i].childNodes[0],this.storage.element[i].strMeal)
+    }
+        
+};
 
-
-console.log('ok');
-
-// export const random = new Random();
-// console.log(random);
-
-// console.log(random.randomRecipesDetails);
+export const random = new Random();

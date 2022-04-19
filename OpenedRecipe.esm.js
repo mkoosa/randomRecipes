@@ -47,9 +47,6 @@ class OpenedRecipe extends Common {
                 this.closeButton();
                 this.closeRecipe();
                 this.deleteBtn = new DeleteBtn(number);
-                console.log(recipes.randomRecipesDetails);
-                // console.log(this.deleteBtn);
-
             })
         });
     }

@@ -3,7 +3,7 @@ import { DELETE_BTN_ID } from "./MainRecipe.esm.js";
 import { openedRecipe, KEY_STORAGE } from "../OpenedRecipe.esm.js";
 import { MAIN_ID } from "./MainRecipe.esm.js";
 import { recipes } from "./recipes.esm.js";
-console.log(recipes)
+
 
 const deleteBtn = 'deleteBtn';
 
@@ -35,9 +35,6 @@ export class DeleteBtn extends Common {
         localStorage.setItem('array', JSON.stringify(value));
         
     };
-
-  
-
 }
 
 
