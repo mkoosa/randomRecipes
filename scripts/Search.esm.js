@@ -4,7 +4,7 @@ import {
 
 import {
     openedRecipe
-} from "./OpenedRecipe.esm.js";
+} from "./scripts/OpenedRecipe.esm.js";
 import {
     Common
 } from "./scripts/Common.esm.js";

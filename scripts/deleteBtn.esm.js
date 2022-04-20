@@ -1,8 +1,20 @@
-import { Common } from "./Common.esm.js";
-import { DELETE_BTN_ID } from "./MainRecipe.esm.js";
-import { openedRecipe, KEY_STORAGE } from "../OpenedRecipe.esm.js";
-import { MAIN_ID } from "./MainRecipe.esm.js";
-import { recipes } from "./recipes.esm.js";
+import {
+    Common
+} from "./Common.esm.js";
+import {
+    DELETE_BTN_ID
+} from "./MainRecipe.esm.js";
+import {
+    openedRecipe,
+    KEY_STORAGE
+} from "./OpenedRecipe.esm.js";
+import {
+    MAIN_ID
+} from "./MainRecipe.esm.js";
+import {
+    random
+} from "./random.esm.js";
+
 
 
 const deleteBtn = 'deleteBtn';
@@ -10,31 +22,48 @@ const deleteBtn = 'deleteBtn';
 export class DeleteBtn extends Common {
     constructor(number) {
         super()
+        this.random = random;
         this.number = number;
         this.main = this.bindElement(MAIN_ID);
         this.openedRecipe = openedRecipe;
-        this.getBtn(deleteBtn, DELETE_BTN_ID)
+        this.getDeleteBtn(deleteBtn, DELETE_BTN_ID);
+        this.recipes = recipes;
     };
-    
-    getBtn(element, id) {
-        this.element = this.bindElement(id);
-        this.element.addEventListener('click', () => this.removeRecipe());
-        
-    };    
+
+    getDeleteBtn(element, id) {
+        element = this.bindElement(id);
+        element.addEventListener('click', () => this.removeRecipe());
+
+    };
     removeRecipe() {
-        let recipes = JSON.parse(localStorage.getItem(KEY_STORAGE));
+        let recipes = this.random.storage.details;
         recipes.splice(this.number, 1);
         this.changeValuesInStorage(recipes);
         this.main.remove();
-        console.log(recipes);
+        this.removeHtmlElement();
     };
-    
-    
+
+    removeHtmlElement() {
+        let element = document.getElementById(`FrontId-${this.number}`);
+        element.remove();
+        this.changeFrontIdAttribute();
+    }
+
+
     changeValuesInStorage(value) {
         localStorage.clear();
         localStorage.setItem('array', JSON.stringify(value));
-        
     };
+
+    changeFrontIdAttribute() {
+        let elements = document.querySelectorAll('div.front');
+        elements.forEach((element, i) => {
+            element.setAttribute('id', `FrontId-${i}`);
+        })
+
+    }
+
+
+
+
 }
-
-

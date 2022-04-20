@@ -24,7 +24,6 @@ export class Recipes extends Common {
         this.recipes = this.bindElement(RECIPES_ID);
         this.createRandomRecipes(RECIPES_AMOUNT);
         this.createNrOfIdFrontRecipe();
-
     };
 
     createRandomRecipes(amount) {

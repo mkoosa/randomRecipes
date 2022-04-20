@@ -1,20 +1,22 @@
 import {
     Common
-} from "./scripts/Common.esm.js";
+} from "./Common.esm.js";
 
 import {
     MAIN_ID,
     HEADER_ICON_ID,
     CONTENT_PARAGRAPH,
     mainRecipe
-} from "./scripts/MainRecipe.esm.js";
+} from "./MainRecipe.esm.js";
 
 import {
     P
-} from "./scripts/FrontRecipe.esm.js";
+} from "./FrontRecipe.esm.js";
 
-import { DeleteBtn } from "./scripts/deleteBtn.esm.js";
-import { recipes } from "./scripts/recipes.esm.js";
+
+
+import { DeleteBtn } from "./DeleteBtn.esm.js";
+import { recipes } from "./Recipes.esm.js";
 
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
@@ -115,3 +117,4 @@ class OpenedRecipe extends Common {
 }
 
 export const openedRecipe = new OpenedRecipe();
+

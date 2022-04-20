@@ -11,6 +11,9 @@ export class Storage {
 
     };
 
+    getDetailsToDisplay() {
+        this.details = JSON.parse(localStorage.getItem(KEY_STORAGE));
+    }
 };
 
 

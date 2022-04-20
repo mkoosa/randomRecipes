@@ -1,10 +1,10 @@
 import {
     recipes
-} from "./recipes.esm.js";
+} from "./Recipes.esm.js";
 
 import {
     Storage
-} from "./storage.esm.js";
+} from "./Storage.esm.js";
 
 export const RECIPES_AMOUNT = 7;
 
@@ -37,12 +37,16 @@ export class Random {
     
     createStorage() {
         this.storage = new Storage(this.randomRecipesDetails);
+        this.storage.getDetailsToDisplay();
     };
     
     displayDishName(i) {
-        this.recipes.getDishName(recipes.recipes.children[i].childNodes[0],this.storage.element[i].strMeal)
+        const element = recipes.recipes.children[i].childNodes[0];
+        const dishName = this.storage.details[i].strMeal;
+        this.recipes.getDishName(element, dishName);
     }
         
 };
 
 export const random = new Random();
+
