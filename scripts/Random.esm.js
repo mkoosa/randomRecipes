@@ -19,11 +19,9 @@ export class Random {
     
     
     getOldItemsFromStorage() {
-        this.oldItems = [];
         let oldItem = localStorage.getItem('wish');
         if (oldItem === null) return;
-        this.oldItems.push(JSON.parse(oldItem));
-        // console.log(this.oldItems);
+        this.oldItems = JSON.parse(oldItem);
     }
 
     getRandomData(i) {
@@ -60,5 +58,4 @@ export class Random {
 };
 
 export const random = new Random();
-console.log(random);
 
