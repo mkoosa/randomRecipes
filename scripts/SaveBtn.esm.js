@@ -11,10 +11,7 @@ import {
 } from "./random.esm.js";
 
 
-
 let items = [];
-
-
 
 export class SaveBtn extends Common {
     constructor(number) {
@@ -38,19 +35,13 @@ export class SaveBtn extends Common {
     saveItemInStorage() {
         let details = this.random.storage.details[this.number];
         if (items.includes(details)) {
-            // console.log('bylo')
             items.pop();
-        
+            
         } else {
-            // console.log('nie bylo')
-            this.oldItems.push(details);
+            this.random.oldItems.push(details);
             this.random.storage.createNewStorageItems('wish', this.oldItems);
         };
         items.push(details);
-
-
-
-
 
     }
 
