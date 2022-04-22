@@ -6,7 +6,7 @@ import {
 } from "./MainRecipe.esm.js";
 import {
     openedRecipe,
-    KEY_STORAGE
+    
 } from "./OpenedRecipe.esm.js";
 import {
     MAIN_ID
@@ -15,13 +15,15 @@ import {
     random
 } from "./random.esm.js";
 
+import { KEY_STORAGE } from "./OpenedRecipe.esm.js";
 
 
-const deleteBtn = 'deleteBtn';
+
 
 export class DeleteBtn extends Common {
     constructor(number) {
         super()
+        let deleteBtn = null;
         this.random = random;
         this.number = number;
         this.main = this.bindElement(MAIN_ID);
@@ -51,8 +53,8 @@ export class DeleteBtn extends Common {
 
 
     changeValuesInStorage(value) {
-        localStorage.clear();
-        localStorage.setItem('array', JSON.stringify(value));
+        localStorage.removeItem(KEY_STORAGE);
+        localStorage.setItem(KEY_STORAGE, JSON.stringify(value));
     };
 
     changeFrontIdAttribute() {

@@ -3,7 +3,7 @@ import {
 } from "./Recipes.esm.js";
 
 import {
-    Storage
+    Storage, KEY_STORAGE
 } from "./Storage.esm.js";
 
 export const RECIPES_AMOUNT = 7;
@@ -14,8 +14,18 @@ export class Random {
     constructor() {
         this.randomRecipesDetails = [];
         this.createRandomRecipes(RECIPES_AMOUNT);
+        this.getOldItemsFromStorage();
     };
     
+    
+    getOldItemsFromStorage() {
+        this.oldItems = [];
+        let oldItem = localStorage.getItem('wish');
+        if (oldItem === null) return;
+        this.oldItems.push(JSON.parse(oldItem));
+        // console.log(this.oldItems);
+    }
+
     getRandomData(i) {
         fetch(URL)
         .then((res) => res.json())
@@ -37,7 +47,8 @@ export class Random {
     
     createStorage() {
         this.storage = new Storage(this.randomRecipesDetails);
-        this.storage.getDetailsToDisplay();
+        this.storage.getDetailsToDisplay(KEY_STORAGE);
+        
     };
     
     displayDishName(i) {
@@ -49,4 +60,5 @@ export class Random {
 };
 
 export const random = new Random();
+console.log(random);
 

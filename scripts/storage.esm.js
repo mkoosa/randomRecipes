@@ -1,4 +1,6 @@
-const KEY_STORAGE = 'array'
+export const KEY_STORAGE = 'array'
+
+
 
 export class Storage {
     constructor(element) {
@@ -8,11 +10,19 @@ export class Storage {
     };
     saveRecipesInStorage() {
         localStorage.setItem(KEY_STORAGE, JSON.stringify(this.element));
-
+    
+        
     };
+    
+    getDetailsToDisplay(key) {
+        // this.details = JSON.parse(localStorage.getItem(KEY_STORAGE));
+        this.details = JSON.parse(localStorage.getItem(key));
+    }
+    
+    createNewStorageItems(key, element) {
+        localStorage.setItem(key, JSON.stringify(element));
 
-    getDetailsToDisplay() {
-        this.details = JSON.parse(localStorage.getItem(KEY_STORAGE));
+        
     }
 };
 

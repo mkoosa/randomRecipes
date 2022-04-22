@@ -37,7 +37,7 @@ const EDIT_TXT = 'edit';
 const ID = 'id';
 const BODY_ELEMENT = 'body';
 export const DELETE_BTN_ID = "DELETE";
-const SAVE_BTN_ID = "SAVE";
+export const SAVE_BTN_ID = "SAVE";
 const EDIT_BTN_ID = "EDIT";
 
 

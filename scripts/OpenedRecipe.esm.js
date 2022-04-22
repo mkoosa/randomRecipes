@@ -13,10 +13,12 @@ import {
     P
 } from "./FrontRecipe.esm.js";
 
-
-
-import { DeleteBtn } from "./DeleteBtn.esm.js";
-import { recipes } from "./Recipes.esm.js";
+import {
+    DeleteBtn
+} from "./DeleteBtn.esm.js";
+import {
+    SaveBtn
+} from "./SaveBtn.esm.js";
 
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
@@ -49,6 +51,9 @@ class OpenedRecipe extends Common {
                 this.closeButton();
                 this.closeRecipe();
                 this.deleteBtn = new DeleteBtn(number);
+                this.saveBtn = new SaveBtn(number);
+                console.log('ssss')
+                // console.log(this.saveBtn)
             })
         });
     }
@@ -117,4 +122,3 @@ class OpenedRecipe extends Common {
 }
 
 export const openedRecipe = new OpenedRecipe();
-
