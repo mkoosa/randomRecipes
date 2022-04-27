@@ -8,7 +8,6 @@ import {
     P,
 } from "./FrontRecipe.esm.js";
 
-
 export const MAIN = 'main';
 const MAIN_HEADER = 'main__header';
 const HEADER_HEADING = 'header__heading';
@@ -36,11 +35,10 @@ const SAVE_TXT = 'save';
 const EDIT_TXT = 'edit';
 const ID = 'id';
 const BODY_ELEMENT = 'body';
-export const DELETE_BTN_ID = "DELETE";
-export const SAVE_BTN_ID = "SAVE";
 const EDIT_BTN_ID = "EDIT";
 
-
+export const DELETE_BTN_ID = "DELETE";
+export const SAVE_BTN_ID = "SAVE";
 export const CONTENT_PARAGRAPH = 'content__paragraph';
 export const HEADER_ICON_ID = 'close'
 export const MAIN_ID = 'mainId'
@@ -81,12 +79,9 @@ export class MainRecipe{
         this.saveBtn = this.frontRecipe.createHtmlElement(DIV);
         this.saveIcon = document.createElement(I);
         this.saveParagraph = this.frontRecipe.createHtmlElement(P, FOOTER_PARAGRAPH);
-
         this.createIdAttribute(this.saveBtn, SAVE_BTN_ID);
         this.createIdAttribute(this.editBtn, EDIT_BTN_ID);
         this.createIdAttribute(this.deleteBtn, DELETE_BTN_ID);
-
-
     };
     
     createRecipeToOpen() {

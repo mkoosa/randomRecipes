@@ -19,12 +19,13 @@ import {
 import {
     SaveBtn
 } from "./SaveBtn.esm.js";
+export const KEY_STORAGE = 'array';
 
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
 const INGREDIENTS_TXT = 'ingredients';
 const ID = 'id';
-export const KEY_STORAGE = 'array';
+
 
 class OpenedRecipe extends Common {
     constructor() {
@@ -52,8 +53,7 @@ class OpenedRecipe extends Common {
                 this.closeRecipe();
                 this.deleteBtn = new DeleteBtn(number);
                 this.saveBtn = new SaveBtn(number);
-                console.log('ssss')
-                // console.log(this.saveBtn)
+               
             })
         });
     }

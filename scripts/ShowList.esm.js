@@ -28,8 +28,6 @@ export class WishList extends Common{
     eventHandler() {
         this.closeBtn.addEventListener('click',  () => this.closeWishList());
     }
-
-    
 };
 
 

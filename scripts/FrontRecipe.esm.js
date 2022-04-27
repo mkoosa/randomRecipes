@@ -26,7 +26,6 @@ export class FrontRecipe {
         this.frontIcon = document.createElement(I);
         this.createClassesInElement(this.frontIcon, FRONT_ICONS_CLASS);
         this.frontParagraph = this.createHtmlElement(P, FRONT_PARAGRAPH_CLASS);
-
     };
 
     createHtmlElement(element, className) {
@@ -39,7 +38,5 @@ export class FrontRecipe {
         icons.forEach((icon) => {
             element.classList.add(icon)
         });
-
-    }
-
-}
+    };
+};

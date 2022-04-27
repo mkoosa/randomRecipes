@@ -3,7 +3,6 @@ export class Common {
         if (typeof elementId === 'undefined') {
             return
         };
-
         this.element = this.bindElement(elementId)
     };
 

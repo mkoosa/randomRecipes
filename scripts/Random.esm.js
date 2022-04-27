@@ -6,18 +6,22 @@ import {
     Storage, KEY_STORAGE
 } from "./Storage.esm.js";
 
-import { headerBtn } from "./HeaderBtn.esm.js";
+
+
+import { Common } from "./Common.esm.js";
 
 export const RECIPES_AMOUNT = 7;
 export const URL = 'https://themealdb.com/api/json/v1/1/random.php';
 
-export class Random {
+const HEADER_BTN_ID = 'headerBtn';
+
+export class Random extends Common{
     constructor() {
+        super();
         this.randomRecipesDetails = [];
-        this.headerBtn = headerBtn;
+        this.headerBtn = this.bindElement(HEADER_BTN_ID);
         this.getOldItemsFromStorage();
         this.createRandomRecipes(RECIPES_AMOUNT);
-    
     };
     
     
@@ -25,7 +29,6 @@ export class Random {
         let oldItem = localStorage.getItem('wish');
         if (oldItem === null) return;
         this.oldItems = JSON.parse(oldItem);
-        this.headerBtn.showHideBtn(this.oldItems);
     }
     
     getRandomData(i) {

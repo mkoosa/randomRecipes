@@ -1,13 +1,6 @@
-import {
-    mainRecipe
-} from "./scripts/MainRecipe.esm.js";
-
-import {
-    openedRecipe
-} from "./scripts/OpenedRecipe.esm.js";
-import {
-    Common
-} from "./scripts/Common.esm.js";
+import { mainRecipe } from "./MainRecipe.esm.js";
+import { openedRecipe } from "./OpenedRecipe.esm.js";
+import { Common } from "./Common.esm.js";
 
 const SEARCH_INPUT_ID = 'searchInput';
 const LOUPE_ID = 'loupe';
@@ -17,7 +10,7 @@ const WHITE = 'white';
 const SUCCEED_TXT = 'search recipe';
 const FAILED_TXT = 'please try once again';
 
-class Search extends Common {
+export class Search extends Common {
     constructor() {
         super();
         this.openedRecipe = openedRecipe;
@@ -74,3 +67,4 @@ class Search extends Common {
 }
 
 export const search = new Search();
+

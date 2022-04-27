@@ -28,13 +28,11 @@ export class SaveBtn extends Common {
 
     getSaveBtn(element, id) {
         element = this.bindElement(id);
-        console.log(element);
         element.addEventListener('click', () => this.saveItemInStorage());
-        
     };
     
     saveItemInStorage() {
-        this.headerBtn.showHideBtn(true);
+        this.headerBtn.headerBtn.style.display = 'block';
         let details = this.random.storage.details[this.number];
         if (items.includes(details)) {
             items.pop();
@@ -51,7 +49,5 @@ export class SaveBtn extends Common {
             
         };
         items.push(details);
-        
     }
-
 };

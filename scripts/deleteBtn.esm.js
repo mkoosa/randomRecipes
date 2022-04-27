@@ -17,9 +17,6 @@ import {
 
 import { KEY_STORAGE } from "./OpenedRecipe.esm.js";
 
-
-
-
 export class DeleteBtn extends Common {
     constructor(number) {
         super()
@@ -62,10 +59,6 @@ export class DeleteBtn extends Common {
         elements.forEach((element, i) => {
             element.setAttribute('id', `FrontId-${i}`);
         })
-
     }
-
-
-
 
 }

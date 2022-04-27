@@ -12,10 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <title>recipes</title>
 </head>
-
 <body>
     <div class="container">
         <header class="header">
@@ -25,36 +23,21 @@
                     <div class="header__button">
                         <p class="header__paragraph">add<i class="fa-solid fa-square-plus"></i></p>
                     </div>
-
                 </div>
                 <div class="header__form">
                     <input type="text" placeholder="search recipe" class="header__input" id="searchInput">
                     <i class="fa-solid fa-magnifying-glass" id="loupe"></i>
                 </div>
             </div>
-            <button class="header__btn" id="headerBtn">Wish List</button>
+            <button class="header__btn" id="headerBtn">Open List</button>
             <div class="header__image-wrapper">
                 <img src="images/silverware-ga82b8284b_1280.png" alt="dishes" class="header__img">
             </div>
-            <div class="wish">
-                <ul class="wish__list">
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                    <li class="wish__item">Lorem ipsum</li>
-                </ul>
+            <div class="wish" id="wish">
                 <button class="wish__btn" id="wishBtn">Close</button>
             </div>
         </header>
         <div class="recipes" id="recipes"></div>
-
     </div>
     <script src="scripts/Main.esm.js" type="module"></script>
 
