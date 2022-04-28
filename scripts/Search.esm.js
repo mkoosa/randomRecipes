@@ -1,6 +1,17 @@
-import { mainRecipe } from "./MainRecipe.esm.js";
-import { openedRecipe } from "./OpenedRecipe.esm.js";
-import { Common } from "./Common.esm.js";
+import {
+    mainRecipe
+} from "./MainRecipe.esm.js";
+import {
+    openedRecipe
+} from "./OpenedRecipe.esm.js";
+import {
+    Common
+} from "./Common.esm.js";
+
+import {
+    random
+} from "./Random.esm.js";
+console.log(random)
 
 const SEARCH_INPUT_ID = 'searchInput';
 const LOUPE_ID = 'loupe';
@@ -16,6 +27,7 @@ export class Search extends Common {
         this.openedRecipe = openedRecipe;
         this.inputElement = this.bindElement(SEARCH_INPUT_ID);
         this.loupe = this.bindElement(LOUPE_ID);
+        this.random = random;
         this.eventHandlers();
     }
 
@@ -32,6 +44,7 @@ export class Search extends Common {
                     this.mainRecipe = mainRecipe;
                     this.openedRecipe = openedRecipe;
                     this.details = data.meals[0];
+                    this.addRecipeToStorage(this.details);
                     this.inputElement.placeholder = SUCCEED_TXT;
                     this.open = true;
                     this.openRecipe();
@@ -50,6 +63,19 @@ export class Search extends Common {
         this.openedRecipe.closeRecipe();
     }
 
+    addRecipeToStorage(element) {
+        let items = this.random.storage.details;
+        this.avoidDoubleItemInStorage(items, element) ? items : items.push(element);
+        this.random.storage.createNewStorageItems('array', items);
+
+    }
+    avoidDoubleItemInStorage(items, element) {
+        if (items[items.length - 1].strMeal === element.strMeal) {
+            return true
+        };
+    };
+  
+
     textProperties(value) {
         value ? this.inputElement.placeholder = SUCCEED_TXT : this.inputElement.placeholder = FAILED_TXT;
         this.inputElement.value = '';
@@ -67,4 +93,3 @@ export class Search extends Common {
 }
 
 export const search = new Search();
-
