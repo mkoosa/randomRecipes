@@ -10,8 +10,7 @@ import {
 
 import {
     random
-} from "./Random.esm.js";
-console.log(random)
+} from "./random.esm.js";
 
 const SEARCH_INPUT_ID = 'searchInput';
 const LOUPE_ID = 'loupe';
@@ -44,12 +43,10 @@ export class Search extends Common {
                     this.mainRecipe = mainRecipe;
                     this.openedRecipe = openedRecipe;
                     this.details = data.meals[0];
-                    this.addRecipeToStorage(this.details);
                     this.inputElement.placeholder = SUCCEED_TXT;
                     this.open = true;
                     this.openRecipe();
                     this.textProperties(this.open);
-
                 } else {
                     this.open = false;
                     this.textProperties(this.open);
@@ -58,24 +55,20 @@ export class Search extends Common {
     };
 
     openRecipe() {
+        const saveBtn = this.openedRecipe.mainRecipe.saveBtn;
         this.openedRecipe.openRecipe(this.details);
         this.openedRecipe.closeButton();
         this.openedRecipe.closeRecipe();
+        this.openedRecipe.mainRecipe.saveBtn.addEventListener('click', () => this.saveRecipe())
     }
 
-    addRecipeToStorage(element) {
-        let items = this.random.storage.details;
-        this.avoidDoubleItemInStorage(items, element) ? items : items.push(element);
-        this.random.storage.createNewStorageItems('array', items);
+    saveRecipe() {
+        const wishItems = this.random.oldItems;
+        const element = this.details;
+        wishItems.push(element);
+        localStorage.setItem('wish', JSON.stringify(wishItems));
 
-    }
-    avoidDoubleItemInStorage(items, element) {
-        if (items[items.length - 1].strMeal === element.strMeal) {
-            return true
-        };
     };
-  
-
     textProperties(value) {
         value ? this.inputElement.placeholder = SUCCEED_TXT : this.inputElement.placeholder = FAILED_TXT;
         this.inputElement.value = '';

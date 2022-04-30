@@ -53,7 +53,6 @@ class OpenedRecipe extends Common {
                 this.closeRecipe();
                 this.deleteBtn = new DeleteBtn(number);
                 this.saveBtn = new SaveBtn(number);
-               
             })
         });
     }
@@ -106,7 +105,6 @@ class OpenedRecipe extends Common {
         if (element === null) return;
         let ingredientsWrapper = this.mainRecipe.contentWrapper;
         let keysArray = Object.keys(element);
-
         keysArray.forEach(key => {
             if (key.includes('strIngredient')) {
                 if (element[key]) {
