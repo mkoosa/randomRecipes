@@ -37,6 +37,7 @@ export class SaveBtn extends Common {
         let details = this.random.storage.details[this.number];
       
         if (items.includes(details)) {
+            console.log(details)
             items.pop();
             
         } else if (this.random.oldItems) {
