@@ -55,20 +55,37 @@ export class Search extends Common {
     };
 
     openRecipe() {
-        const saveBtn = this.openedRecipe.mainRecipe.saveBtn;
         this.openedRecipe.openRecipe(this.details);
         this.openedRecipe.closeButton();
         this.openedRecipe.closeRecipe();
         this.openedRecipe.mainRecipe.saveBtn.addEventListener('click', () => this.saveRecipe())
-    }
+    };
 
     saveRecipe() {
-        const wishItems = this.random.oldItems;
-        const element = this.details;
-        wishItems.push(element);
-        localStorage.setItem('wish', JSON.stringify(wishItems));
-
+        if (localStorage.getItem('wish') === null) {
+            this.random.oldItems = [];
+            this.random.oldItems.push(this.details);
+            localStorage.setItem('wish', JSON.stringify(this.details));
+        } else {
+            const wishItems = this.random.oldItems;
+            const wishItem = this.details;
+            if (!this.checkDoubleValue(wishItems, wishItem)) {
+                wishItems.push(wishItem);
+            }
+            localStorage.setItem('wish', JSON.stringify(wishItems));
+        }
     };
+
+    checkDoubleValue(elements, element) {
+        let i = 0;
+        elements.forEach(el => {
+            if (el.strMeal == element.strMeal) {
+                i++;
+            };
+        });
+        return i;
+    };
+
     textProperties(value) {
         value ? this.inputElement.placeholder = SUCCEED_TXT : this.inputElement.placeholder = FAILED_TXT;
         this.inputElement.value = '';
