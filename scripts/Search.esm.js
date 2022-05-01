@@ -58,8 +58,13 @@ export class Search extends Common {
         this.openedRecipe.openRecipe(this.details);
         this.openedRecipe.closeButton();
         this.openedRecipe.closeRecipe();
+        this.hideDeleteBtn();
         this.openedRecipe.mainRecipe.saveBtn.addEventListener('click', () => this.saveRecipe())
     };
+
+    hideDeleteBtn() {
+        this.openedRecipe.mainRecipe.deleteBtn.style.display = 'none';
+    }
 
     saveRecipe() {
         if (localStorage.getItem('wish') === null) {
