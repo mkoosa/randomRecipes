@@ -19,6 +19,8 @@ import {
 import {
     SaveBtn
 } from "./SaveBtn.esm.js";
+
+import { EditBtn } from "./EditBtn.esm.js";
 export const KEY_STORAGE = 'array';
 
 const FRONT_BTN_ID = '#frontBtn';
@@ -53,6 +55,8 @@ class OpenedRecipe extends Common {
                 this.closeRecipe();
                 this.deleteBtn = new DeleteBtn(number);
                 this.saveBtn = new SaveBtn(number);
+                this.editBtn = new EditBtn(number);
+                
             })
         });
     }

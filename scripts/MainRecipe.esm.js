@@ -35,13 +35,16 @@ const SAVE_TXT = 'save';
 const EDIT_TXT = 'edit';
 const ID = 'id';
 const BODY_ELEMENT = 'body';
-const EDIT_BTN_ID = "EDIT";
+
+export const PREPARATION_ID = 'preparation';
+export const EDIT_BTN_ID = "EDIT";
 
 export const DELETE_BTN_ID = "DELETE";
 export const SAVE_BTN_ID = "SAVE";
 export const CONTENT_PARAGRAPH = 'content__paragraph';
 export const HEADER_ICON_ID = 'close'
-export const MAIN_ID = 'mainId'
+export const MAIN_ID = 'mainId';
+export const MAIN_CONTENT_ID = 'mainContentId';
 
 export class MainRecipe{
     constructor() {
@@ -79,9 +82,11 @@ export class MainRecipe{
         this.saveBtn = this.frontRecipe.createHtmlElement(DIV);
         this.saveIcon = document.createElement(I);
         this.saveParagraph = this.frontRecipe.createHtmlElement(P, FOOTER_PARAGRAPH);
+        this.createIdAttribute(this.mainContent, MAIN_CONTENT_ID);
         this.createIdAttribute(this.saveBtn, SAVE_BTN_ID);
         this.createIdAttribute(this.editBtn, EDIT_BTN_ID);
         this.createIdAttribute(this.deleteBtn, DELETE_BTN_ID);
+        this.createIdAttribute(this.secondBottomParagraph, PREPARATION_ID);
     };
     
     createRecipeToOpen() {
