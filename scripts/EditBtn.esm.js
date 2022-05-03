@@ -1,5 +1,5 @@
 import { Common } from "./Common.esm.js";
-import { MAIN_ID, EDIT_BTN_ID, PREPARATION_ID, MAIN_CONTENT_ID } from "./MainRecipe.esm.js";
+import { MAIN_ID, EDIT_BTN_ID, PREPARATION_ID, MAIN_CONTENT_ID, SAVE_BTN_ID } from "./MainRecipe.esm.js";
 import { random } from "./random.esm.js";
 
 export class EditBtn extends Common{
@@ -11,12 +11,17 @@ export class EditBtn extends Common{
         this.main = this.bindElement(MAIN_ID);
         this.preparation = this.bindElement(PREPARATION_ID);
         this.mainContent = this.bindElement(MAIN_CONTENT_ID);
-        this.editBtn = this.getEditBtn(); 
+        this.editBtn = this.getEditBtn();
+        this.saveBtn = this.getSaveBtn();
         this.eventHandler();
     };
 
     getEditBtn() {
         return this.bindElement(EDIT_BTN_ID)
+        
+    };
+    getSaveBtn() {
+        return this.bindElement(SAVE_BTN_ID)
         
     };
 
@@ -56,6 +61,9 @@ export class EditBtn extends Common{
         
     }
     
+    
+    //
+    
     eventHandler() {
         this.preparation.addEventListener('mousedown', () => this.prepareToEdit());
         this.mainContent.addEventListener('click', () => this.removeBorder())
@@ -65,6 +73,7 @@ export class EditBtn extends Common{
 
 
 }
+
 
 
 
