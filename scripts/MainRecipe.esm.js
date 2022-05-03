@@ -38,6 +38,7 @@ const BODY_ELEMENT = 'body';
 
 export const PREPARATION_ID = 'preparation';
 export const EDIT_BTN_ID = "EDIT";
+export const FOOTER_PARAGRAPH_ID = 'footerParagraph';
 
 export const DELETE_BTN_ID = "DELETE";
 export const SAVE_BTN_ID = "SAVE";
@@ -87,6 +88,7 @@ export class MainRecipe{
         this.createIdAttribute(this.editBtn, EDIT_BTN_ID);
         this.createIdAttribute(this.deleteBtn, DELETE_BTN_ID);
         this.createIdAttribute(this.secondBottomParagraph, PREPARATION_ID);
+        this.createIdAttribute(this.editParagraph, FOOTER_PARAGRAPH_ID);
     };
     
     createRecipeToOpen() {
