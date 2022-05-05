@@ -56,7 +56,6 @@ class OpenedRecipe extends Common {
                 this.deleteBtn = new DeleteBtn(number);
                 this.saveBtn = new SaveBtn(number);
                 this.editBtn = new Edit(number);
-                
             })
         });
     }
