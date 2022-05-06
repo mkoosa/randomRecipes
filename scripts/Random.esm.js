@@ -40,7 +40,9 @@ export class Random extends Common{
             this.randomRecipesDetails.push(recipeDetails);
             this.createStorage();
             this.displayDishName(i)
+            this.displayDishName(i, recipeDetails.strMeal)
         })
+        
         .catch(error => console.error('Error:', error));
     };
     
@@ -56,9 +58,9 @@ export class Random extends Common{
         
     };
     
-    displayDishName(i) {
+    displayDishName(i, name) {
         const element = recipes.recipes.children[i].childNodes[0];
-        const dishName = this.storage.details[i].strMeal;
+        const dishName = name;
         this.recipes.getDishName(element, dishName);
     }
         
