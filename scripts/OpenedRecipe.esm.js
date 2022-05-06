@@ -15,10 +15,10 @@ import {
 
 import {
     DeleteBtn
-} from "./DeleteBtn.esm.js";
+} from "./Delete.esm.js";
 import {
     SaveBtn
-} from "./SaveBtn.esm.js";
+} from "./Save.esm.js";
 
 import { Edit } from "./Edit.esm.js";
 export const KEY_STORAGE = 'array';
