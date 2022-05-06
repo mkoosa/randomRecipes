@@ -96,7 +96,7 @@ export class Edit extends Common {
     }
     
     saveChangedPreparation() {
-        if (this.compareChanges()) {
+        if (!this.compareChanges()) {
             console.log('save')
         } else {
             console.log('no save')
