@@ -30,27 +30,26 @@ export class SaveBtn extends Common {
     getSaveBtn(element, id) {
         element = this.bindElement(id);
         element.addEventListener('click', () => this.saveItemInStorage());
-        
     };
     
     saveItemInStorage() {
-    
         this.headerBtn.headerBtn.style.display = 'block';
-        let details = this.random.storage.details[this.number];
-      
+        let details = this.random.randomRecipesDetails[this.number];
+
         if (items.includes(details)) {
             items.pop();
-            
         } else if (this.random.oldItems) {
             this.random.oldItems.push(details);
-            this.random.storage.createNewStorageItems('wish', this.random.oldItems);
-
+            this.setItem();    
         } else {
             this.random.oldItems = [];
             this.random.oldItems.push(details);
-            this.random.storage.createNewStorageItems('wish', this.random.oldItems);
-            
+            this.setItem();    
         };
         items.push(details);
+    }
+    
+    setItem() {
+        localStorage.setItem('wish', JSON.stringify(this.random.oldItems));
     }
 };
