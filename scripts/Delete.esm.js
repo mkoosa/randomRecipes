@@ -60,5 +60,4 @@ export class DeleteBtn extends Common {
             element.setAttribute('id', `FrontId-${i}`);
         })
     }
-
 }

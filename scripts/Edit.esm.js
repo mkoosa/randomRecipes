@@ -107,6 +107,5 @@ export class Edit extends Common {
         this.preparation.addEventListener('mousedown', () => this.prepareToEdit());
         this.mainContent.addEventListener('click', () => this.removeBorder())
         this.editBtn.addEventListener('click', () => this.prepareToEdit())
-
     };
 }

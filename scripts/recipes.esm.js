@@ -15,41 +15,50 @@ import {
 
 const RECIPES_ID = 'recipes';
 
-
 export class Recipes extends Common {
     constructor() {
         super();
         this.random = random;
         this.randomRecipesDetails = [];
+        this.dishName = [];
         this.recipes = this.bindElement(RECIPES_ID);
         this.createRandomRecipes(RECIPES_AMOUNT);
         this.createNrOfIdFrontRecipe();
-
+        this.headings = this.getHeadingsElements();
+        
     };
-
+    
+    getHeadingsElements() {
+        return [...document.getElementsByClassName('front__heading')];
+    }
+    
     createRandomRecipes(amount) {
         for (let i = 0; i < amount; i++) {
             this.createRandomRecipe();
-
+            
         };
-    };
 
+
+        
+    };
+    
     createNrOfIdFrontRecipe() {
         const recipes = document.querySelectorAll(`.${FRONT_CLASS}`);
         recipes.forEach((div, i) => {
             div.setAttribute('id', `FrontId-${i}`);
         });
     };
-
+    
     createRandomRecipe() {
         this.createFrontRecipeHtmlElements();
+        
     };
-
+    
     createFrontRecipeHtmlElements() {
         this.createFrontRecipeObj();
-
+        
     };
-
+    
     createFrontRecipeObj() {
         this.frontRecipe = new FrontRecipe();
         const {
@@ -59,17 +68,39 @@ export class Recipes extends Common {
             frontIcon,
             frontParagraph,
         } = this.frontRecipe;
-
+        
         const front = this.recipes.appendChild(recipeFront);
-        front.appendChild(frontHeading);
+        front.appendChild(frontHeading); 
+    
         const btn = front.appendChild(frontBtn);
         btn.appendChild(frontIcon);
         btn.appendChild(frontParagraph).textContent = 'open recipe';
         return this.frontRecipe;
     };
-
+    
     getDishName(element, dishName) {
         element.textContent = dishName;
     }
+    
+    getRandomDetails(detail) {
+        this.randomRecipesDetails.push(detail);
+        
+    }
+    getName(element) {
+        this.dishName.push(element);
+        if (this.dishName.length === RECIPES_AMOUNT) {
+            for (let i = 0; i < RECIPES_AMOUNT; i++){
+                this.displayDishName(this.headings[i] ,this.dishName[i])
+            }
+        }
+    }
+
+    displayDishName(element, name) {
+        element.textContent = name;
+    };
+    
 };
+
 export const recipes = new Recipes();
+
+console.log(recipes)
