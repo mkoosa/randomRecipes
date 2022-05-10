@@ -103,4 +103,4 @@ export class Recipes extends Common {
 
 export const recipes = new Recipes();
 
-console.log(recipes)
+// console.log(recipes)
