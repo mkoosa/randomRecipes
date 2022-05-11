@@ -32,15 +32,12 @@ export class Edit extends Common {
 
     getEditBtn() {
         return this.bindElement(EDIT_BTN_ID)
-
     };
     getSaveBtn() {
         return this.bindElement(SAVE_BTN_ID)
-
     };
     getDeleteBtn() {
         return this.bindElement(DELETE_BTN_ID)
-        
     };
     
     prepareToEdit() {
@@ -97,10 +94,17 @@ export class Edit extends Common {
     
     saveChangedPreparation() {
         if (!this.compareChanges()) {
+            console.log(this.random.randomRecipesDetails[this.number]);
             console.log('save')
+            this.saveMyChanges()
         } else {
-            console.log('no save')
+            return;
         }
+    }
+
+    saveMyChanges() {
+        this.random.randomRecipesDetails[this.number].strInstructions = this.preparation.textContent;
+        localStorage.setItem('array', JSON.stringify(this.random.randomRecipesDetails));
     }
 
     eventHandlers() {
