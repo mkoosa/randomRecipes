@@ -26,7 +26,6 @@ export class DeleteBtn extends Common {
         this.main = this.bindElement(MAIN_ID);
         this.openedRecipe = openedRecipe;
         this.getDeleteBtn(deleteBtn, DELETE_BTN_ID);
-        this.recipes = recipes;
     };
 
     getDeleteBtn(element, id) {
@@ -50,6 +49,7 @@ export class DeleteBtn extends Common {
 
 
     changeValuesInStorage(value) {
+        console.log(value)
         localStorage.removeItem(KEY_STORAGE);
         localStorage.setItem(KEY_STORAGE, JSON.stringify(value));
     };

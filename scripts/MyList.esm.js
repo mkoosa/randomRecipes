@@ -1,6 +1,17 @@
 import { openedRecipe } from "./OpenedRecipe.esm.js";
 import { Common } from "./Common.esm.js";
 import { mainRecipe } from "./MainRecipe.esm.js";
+import {
+    random
+} from "./random.esm.js";
+import {
+    DeleteBtn
+} from "./Delete.esm.js";
+import {
+    SaveBtn
+} from "./Save.esm.js";
+
+import { Edit } from "./Edit.esm.js";
 
 const WISH_ID = 'wish';
 const WISH_BTN_ID = 'wishBtn';
@@ -50,19 +61,40 @@ export class MyList extends Common{
         }
         this.getAttribute();
     }
-
+    
     getAttribute() {
         let liElements = [...document.getElementsByClassName(LI_CLASS)];
         liElements.forEach(el => {
             el.addEventListener('click', () => {
                 let target = el.getAttribute(LI_ATTRIBUTE);
                 this.openRecipe(target);
-            })
-        })
+            });
+        });
+    };
+    
+    openRecipe(target) {
+        this.target = target;
+        const recipe = this.details[this.target]; 
+        this.openedRecipe.openRecipe(recipe);
+        this.openedRecipe.closeButton();
+        this.openedRecipe.closeRecipe();
+        this.deleteBtn = new DeleteBtn(this.target);
+        this.deleteButton = this.deleteBtn.openedRecipe.mainRecipe.deleteBtn;
+        this.deleteBtn.changeValuesInStorage = this.changeValuesInStorage;
+    };
+    
+    deleteRecipe() {
+        this.changeValuesInStorage(this.target);
+    };
+    changeValuesInStorage = () => {
+        this.details.splice(this.target, 1);
+        localStorage.setItem('wish', JSON.stringify(this.details));
     };
 };
 
 export const myList = new MyList();
+
+
 
 
 
