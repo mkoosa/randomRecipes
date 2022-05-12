@@ -1,10 +1,14 @@
 import {
     Common
 } from "./Common.esm.js";
-import { random } from "./random.esm.js";
-import { myList } from "./MyList.esm.js";
+import {
+    random
+} from "./random.esm.js";
+import {
+    myList
+} from "./MyList.esm.js";
 
-const HEADER_BTN_ID = 'headerBtn';
+export const HEADER_BTN_ID = 'headerBtn';
 
 class HeaderBtn extends Common {
     constructor() {
@@ -13,17 +17,18 @@ class HeaderBtn extends Common {
         this.createButton();
         this.eventHandler();
         this.showHideBtn();
-    }
-    
+    };
     createButton() {
         this.headerBtn = this.bindElement(HEADER_BTN_ID);
     };
+    
     showHideBtn() {
         if (this.random.oldItems) {
             this.headerBtn.style.display = 'block';
-        } else {
+        };
+        if (!this.random.oldItems.length) {
             this.headerBtn.style.display = 'none';
-        }''
+        };
     };
 
     eventHandler() {
@@ -31,12 +36,9 @@ class HeaderBtn extends Common {
     };
 
     showWishList() {
-        // console.log('wishList');
-        this.myList = myList
-        // console.log(myList.createWishList());
-        this.myList.createWishList()
+        this.myList = myList;
+        this.myList.createWishList();
     };
-    
 };
 
 export const headerBtn = new HeaderBtn();
