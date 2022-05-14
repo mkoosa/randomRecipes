@@ -28,9 +28,6 @@ import {
     recipes
 } from "./Recipes.esm.js";
 
-
-
-
 const WISH_ID = 'wish';
 const WISH_BTN_ID = 'wishBtn';
 const UL = 'ul';
@@ -103,10 +100,28 @@ export class MyList extends Common {
         this.openedRecipe.closeButton();
         this.openedRecipe.closeRecipe();
         this.deleteBtn = new DeleteBtn(this.target);
-        this.deleteBtn.changeValuesInStorage = this.changeValuesInStorage;
-        this.deleteBtn.removeHtmlElement = this.removeHtmlElement;
+        this.edit = new Edit(this.target);
+        this.fitMethodToDeleteBtn(this.deleteBtn);
+        this.fitMethodToEditBtn(this.edit);  
+    };
+    
+    fitMethodToDeleteBtn(element) {
+        element.changeValuesInStorage = this.changeValuesInStorage;
+        element.removeHtmlElement = this.removeHtmlElement;
+    }
+    
+    fitMethodToEditBtn(element) {
+        this.number = element.number;
+        element.saveMyChanges = this.saveMyChanges
     };
 
+    saveMyChanges() {
+        const elements = JSON.parse(localStorage.getItem('wish'));
+        elements[this.number].strInstructions = this.preparation.textContent;
+        localStorage.setItem('wish', JSON.stringify(elements));
+
+    };
+    
     changeValuesInStorage = () => {
         this.details.splice(this.target, 1);
         localStorage.setItem('wish', JSON.stringify(this.details));
