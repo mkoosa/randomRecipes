@@ -35,6 +35,7 @@ export class DeleteBtn extends Common {
     };
     removeRecipe() {
         let recipes = this.random.randomRecipesDetails;
+
         recipes.splice(this.number, 1);
         this.changeValuesInStorage(recipes);
         this.main.remove();

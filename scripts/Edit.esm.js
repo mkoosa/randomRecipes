@@ -57,6 +57,7 @@ export class Edit extends Common {
     };
     
     removeBorder() {
+        console.log(this)
         this.preparation.style.border = 'none';
         this.flag = false;
         this.textBtn.textContent = 'edit'
@@ -94,8 +95,6 @@ export class Edit extends Common {
     
     saveChangedPreparation() {
         if (!this.compareChanges()) {
-            console.log(this.random.randomRecipesDetails[this.number]);
-            console.log('save')
             this.saveMyChanges()
         } else {
             return;

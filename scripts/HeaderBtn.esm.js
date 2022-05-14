@@ -23,6 +23,7 @@ class HeaderBtn extends Common {
     };
     
     showHideBtn() {
+        if (!this.random.oldItems) return;
         if (this.random.oldItems) {
             this.headerBtn.style.display = 'block';
         };
