@@ -14,7 +14,7 @@ import {
     random
 } from "./random.esm.js";
 
-export class Edit extends Common {
+export class EditBtn extends Common {
     constructor(number) {
         super()
         this.number = number;

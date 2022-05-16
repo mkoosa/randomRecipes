@@ -10,19 +10,14 @@ import {
 import {
     headerBtn
 } from "./HeaderBtn.esm.js";
-import {
-    random
-} from "./random.esm.js";
-import {
-    DeleteBtn
-} from "./Delete.esm.js";
-import {
-    SaveBtn
-} from "./Save.esm.js";
 
 import {
-    Edit
-} from "./Edit.esm.js";
+    DeleteBtn
+} from "./DeleteBtn.esm.js";
+
+import {
+    EditBtn
+} from "./EditBtn.esm.js";
 
 import {
     recipes
@@ -67,7 +62,7 @@ export class MyList extends Common {
 
     getDetails() {
         this.details = JSON.parse(localStorage.getItem(WISH_ID));
-    }
+    };
 
     createWishList() {
         this.displayWishList();
@@ -78,10 +73,9 @@ export class MyList extends Common {
             this.listElement.setAttribute(LI_ATTRIBUTE, i);
             this.ulList.appendChild(this.listElement).textContent = this.details[i].strMeal;
             this.listElements.push(this.listElement);
-        }
+        };
         this.getAttribute();
-
-    }
+    };
 
     getAttribute() {
         const liElements = [...document.getElementsByClassName(LI_CLASS)];
@@ -100,16 +94,17 @@ export class MyList extends Common {
         this.openedRecipe.closeButton();
         this.openedRecipe.closeRecipe();
         this.deleteBtn = new DeleteBtn(this.target);
-        this.edit = new Edit(this.target);
+        this.editBtn = new EditBtn(this.target);
+        this.hideSaveBtn();
         this.fitMethodToDeleteBtn(this.deleteBtn);
-        this.fitMethodToEditBtn(this.edit);  
+        this.fitMethodToEditBtn(this.editBtn);  
     };
     
     fitMethodToDeleteBtn(element) {
         element.changeValuesInStorage = this.changeValuesInStorage;
         element.removeHtmlElement = this.removeHtmlElement;
-    }
-    
+    };
+
     fitMethodToEditBtn(element) {
         this.number = element.number;
         element.saveMyChanges = this.saveMyChanges
@@ -119,7 +114,6 @@ export class MyList extends Common {
         const elements = JSON.parse(localStorage.getItem('wish'));
         elements[this.number].strInstructions = this.preparation.textContent;
         localStorage.setItem('wish', JSON.stringify(elements));
-
     };
     
     changeValuesInStorage = () => {
@@ -132,15 +126,19 @@ export class MyList extends Common {
 
     removeHtmlElement() {
         return
-    }
+    };
 
     showHideBtn() {
         if (!this.details.length) {
             this.headerBtn.headerBtn.style.display = 'none'
         } else {
             this.headerBtn.headerBtn.style.display = 'block'
-        }
-    }
+        };
+    };
+
+    hideSaveBtn() {
+        this.mainRecipe.saveBtn.style.display = 'none';
+    };
 };
 
 export const myList = new MyList();

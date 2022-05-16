@@ -34,12 +34,8 @@ export class Recipes extends Common {
     
     createRandomRecipes(amount) {
         for (let i = 0; i < amount; i++) {
-            this.createRandomRecipe();
-            
+            this.createRandomRecipe();  
         };
-
-
-        
     };
     
     createNrOfIdFrontRecipe() {
@@ -51,7 +47,6 @@ export class Recipes extends Common {
     
     createRandomRecipe() {
         this.createFrontRecipeHtmlElements();
-        
     };
     
     createFrontRecipeHtmlElements() {
@@ -71,7 +66,6 @@ export class Recipes extends Common {
         
         const front = this.recipes.appendChild(recipeFront);
         front.appendChild(frontHeading); 
-    
         const btn = front.appendChild(frontBtn);
         btn.appendChild(frontIcon);
         btn.appendChild(frontParagraph).textContent = 'open recipe';
@@ -102,5 +96,3 @@ export class Recipes extends Common {
 };
 
 export const recipes = new Recipes();
-
-// console.log(recipes)

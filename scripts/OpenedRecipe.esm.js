@@ -15,12 +15,12 @@ import {
 
 import {
     DeleteBtn
-} from "./Delete.esm.js";
+} from "./DeleteBtn.esm.js";
 import {
     SaveBtn
-} from "./Save.esm.js";
+} from "./SaveBtn.esm.js";
 
-import { Edit } from "./Edit.esm.js";
+import { EditBtn } from "./EditBtn.esm.js";
 export const KEY_STORAGE = 'array';
 
 const FRONT_BTN_ID = '#frontBtn';
@@ -55,7 +55,7 @@ class OpenedRecipe extends Common {
                 this.closeRecipe();
                 this.deleteBtn = new DeleteBtn(number);
                 this.saveBtn = new SaveBtn(number);
-                this.editBtn = new Edit(number);
+                this.editBtn = new EditBtn(number);
             })
         });
     }
