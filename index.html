@@ -14,14 +14,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>recipes</title>
 </head>
+
 <body>
     <div class="container">
         <header class="header">
             <div class="header__left">
                 <h1 class="header__heading">Random Recipe Box</h1>
                 <div class="header__middle">
-                    <div class="header__button">
-                        <p class="header__paragraph">add<i class="fa-solid fa-square-plus"></i></p>
+                    <div class="header__button" id="addBtn">
+                        <p class="header__paragraph">add<i class="fa-solid fa-square-plus"></i>
+
                     </div>
                 </div>
                 <div clcleqass="header__form">
@@ -37,7 +39,16 @@
                 <button class="wish__btn" id="wishBtn">Close</button>
             </div>
         </header>
-        <div class="recipes" id="recipes"></div>
+        <div class="recipes" id="recipes">
+        </div>
+    </div>
+    <div class="myRecipe" id="myRecipe">
+        <!-- <form class="myRecipe__form">
+            <label class="myRecipe__label">Name</label>
+            <input type="text" class="myRecipe__input">
+        </form>
+        <p class="myRecipe__btn">save<i class="fa-solid fa-square-check"></i></p> -->
+       
     </div>
     <script src="scripts/Main.esm.js" type="module"></script>
 
