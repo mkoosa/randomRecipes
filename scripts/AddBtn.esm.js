@@ -68,6 +68,7 @@ class AddBtn extends Common {
         this.form.appendChild(this.p);
         this.p.appendChild(this.icon);
         this.p.addEventListener('click', () => this.displayCorrectForm());
+        this.closeIcon.addEventListener('click', () => this.closeForm());
     };
 
     getValue(element) {
@@ -80,6 +81,12 @@ class AddBtn extends Common {
         this.checkTarget(elements);
         this.isEmptyValue(element);
     };
+
+    closeForm() {
+        this.form.remove();
+        this.myRecipe.style.display = 'none';
+        this.target = 0;
+    }
 
     checkTarget(elements) {
         if (this.target === elements.length - 1) {
