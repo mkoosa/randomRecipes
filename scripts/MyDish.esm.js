@@ -1,4 +1,4 @@
-export class MyRecipe {
+export class MyDish {
     constructor(strMeal, strIngredient, strInstructions, strMealThumb) {
         this._strMeal = strMeal;
         this._strIngredient = strIngredient;

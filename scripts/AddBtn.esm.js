@@ -5,8 +5,8 @@ import {
     mainRecipe
 } from "./MainRecipe.esm.js";
 import {
-    MyRecipe
-} from "./MyRecipe.esm.js";
+    MyDish
+} from "./MyDish.esm.js";
 
 const DIV = 'div';
 const FORM = 'form';
@@ -41,7 +41,8 @@ class AddBtn extends Common {
     };
 
     prepareRecipeDetails() {
-        this.myRecipe = new MyRecipe(this.saveInputValue);
+        this.myDish = new MyDish(this.saveInputValue);
+        console.log(this.myDish);
         this.createFormHTMLElements();
     };
 
