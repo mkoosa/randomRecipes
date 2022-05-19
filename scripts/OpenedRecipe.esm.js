@@ -20,14 +20,15 @@ import {
     SaveBtn
 } from "./SaveBtn.esm.js";
 
-import { EditBtn } from "./EditBtn.esm.js";
+import {
+    EditBtn
+} from "./EditBtn.esm.js";
 export const KEY_STORAGE = 'array';
 
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
 const INGREDIENTS_TXT = 'ingredients';
 const ID = 'id';
-
 
 export class OpenedRecipe extends Common {
     constructor() {
@@ -107,19 +108,22 @@ export class OpenedRecipe extends Common {
 
     displayIngredients(element) {
         if (element === null) return;
+        let ingredients = []
         let ingredientsWrapper = this.mainRecipe.contentWrapper;
         let keysArray = Object.keys(element);
         keysArray.forEach(key => {
             if (key.includes('strIngredient')) {
                 if (element[key]) {
                     const toDisplay = element[key];
-                    const paragraph = document.createElement(P);
-                    paragraph.classList.add(CONTENT_PARAGRAPH);
-                    this.insertTextToElement(paragraph, toDisplay)
-                    ingredientsWrapper.appendChild(paragraph);
+                    ingredients.push(toDisplay);
                 };
             };
         });
+        ingredients = ingredients.toString();
+        const paragraph = document.createElement(P);
+        paragraph.classList.add(CONTENT_PARAGRAPH);
+        this.insertTextToElement(paragraph, ingredients);
+        ingredientsWrapper.appendChild(paragraph);
     };
 };
 
