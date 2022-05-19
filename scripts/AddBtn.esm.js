@@ -83,6 +83,20 @@ class AddBtn extends Common {
         this.isEmptyValue(element);
     };
 
+    fillMyDish(target, value) {
+        switch (target) {
+            case 0:
+                this.myDish.setName = value;
+                break;
+            case 1:
+                this.myDish.strIngredient = value;
+                break;
+            case 2:
+                this.myDish.setInstructions = value;
+                break;
+        };
+    };
+
     closeForm() {
         this.form.remove();
         this.myRecipe.style.display = 'none';
@@ -102,6 +116,8 @@ class AddBtn extends Common {
         if (this.getValue(element)) {
             this.target++;
             console.log(element.value)
+            this.fillMyDish(this.target, element.value);
+            console.log(this.myDish);
             this.clearHtmlElement(element);
             this.changeHtmlElement();
             element.value = '';

@@ -4,7 +4,7 @@ import {
 import {
     Common
 } from "./Common.esm.js";
-export const RECIPES_AMOUNT = 7;
+export const RECIPES_AMOUNT = 8;
 export const URL = 'https://themealdb.com/api/json/v1/1/random.php';
 
 const HEADER_BTN_ID = 'headerBtn';

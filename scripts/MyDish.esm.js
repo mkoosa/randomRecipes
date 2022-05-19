@@ -6,20 +6,40 @@ export class MyDish {
         this._strMealThumb = strMealThumb;
     };
 
-    getName() {
+    get getName() {
         return this._strMeal;
     };
 
-    getIngredients() {
+    set setName(newValue) {
+        this._strMeal = newValue;
+    };
+
+
+    get getIngredients() {
         return this._strIngredient;
     };
 
-    getInstructions() {
-        return this.strInstructions;
+    set setIngredients(newValue) {
+        this._strIngredient = newValue;
+    }
+
+
+    get getInstructions() {
+        return this._strInstructions;
     };
 
-    getImagePath() {
+
+    set setInstructions(newValue) {
+        this._strInstructions = newValue;
+    };
+
+    get getImagePath() {
         return this._strMealThumb
     };
 
+    set setImagePath(newValue) {
+        this._strMealThumb = newValue;
+    };
+
 };
+
