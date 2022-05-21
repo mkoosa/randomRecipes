@@ -28,6 +28,9 @@ const WISH_BTN_ID = 'wishBtn';
 const UL = 'ul';
 const LI = 'li';
 const UL_CLASS = 'wish__list';
+const UL_CLASSES = ['wish__list', 'container-fluid', 'd-flex',
+    'flex-column', 'justify-content-evenly', 'align-items-center', 'flex-wrap', 'py-3', 'active'
+];
 const LI_CLASS = 'wish__item';
 const LI_ATTRIBUTE = 'data'
 
@@ -66,7 +69,9 @@ export class MyList extends Common {
 
     createWishList() {
         this.displayWishList();
-        this.ulList = this.frontRecipe.createHtmlElement(UL, UL_CLASS);
+        this.ulList = document.createElement(UL);
+        this.frontRecipe.createClassesInElement(this.ulList, UL_CLASSES);
+
         this.wish.appendChild(this.ulList);
         for (let i = 0; i < this.details.length; i++) {
             this.listElement = this.frontRecipe.createHtmlElement(LI, LI_CLASS);
@@ -75,7 +80,13 @@ export class MyList extends Common {
             this.listElements.push(this.listElement);
         };
         this.getAttribute();
+        this.moveDownList();
     };
+
+    moveDownList() {
+        this.wish.classList.add('active');
+    }
+
 
     getAttribute() {
         const liElements = [...document.getElementsByClassName(LI_CLASS)];
@@ -97,9 +108,9 @@ export class MyList extends Common {
         this.editBtn = new EditBtn(this.target);
         this.hideSaveBtn();
         this.fitMethodToDeleteBtn(this.deleteBtn);
-        this.fitMethodToEditBtn(this.editBtn);  
+        this.fitMethodToEditBtn(this.editBtn);
     };
-    
+
     fitMethodToDeleteBtn(element) {
         element.changeValuesInStorage = this.changeValuesInStorage;
         element.removeHtmlElement = this.removeHtmlElement;
@@ -115,7 +126,7 @@ export class MyList extends Common {
         elements[this.number].strInstructions = this.preparation.textContent;
         localStorage.setItem('wish', JSON.stringify(elements));
     };
-    
+
     changeValuesInStorage = () => {
         this.details.splice(this.target, 1);
         localStorage.setItem('wish', JSON.stringify(this.details));
