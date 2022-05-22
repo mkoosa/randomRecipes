@@ -1,7 +1,5 @@
 export const KEY_STORAGE = 'array'
 
-
-
 export class Storage {
     constructor(element) {
         this.element = element;
@@ -20,7 +18,7 @@ export class Storage {
         localStorage.setItem(key, JSON.stringify(element));
 
         
-    }
+    };
 };
 
 

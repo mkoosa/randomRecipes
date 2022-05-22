@@ -5,7 +5,7 @@ import {
 import {
     MAIN_ID,
     HEADER_ICON_ID,
-    CONTENT_PARAGRAPH,
+    CONTENT_PARAGRAPH_CLASS,
     mainRecipe
 } from "./MainRecipe.esm.js";
 
@@ -80,7 +80,6 @@ export class OpenedRecipe extends Common {
     };
 
     elementsToDisplay(element) {
-        console.log(element);
         this.insertContentToElements(this.mainRecipe.headerHeading, element.strMeal);
         this.insertContentToElements(this.mainRecipe.secondBottomParagraph, element.strInstructions);
         this.insertImageToElement(this.mainRecipe.contentImg, element.strMealThumb);
@@ -121,7 +120,7 @@ export class OpenedRecipe extends Common {
         });
         ingredients = ingredients.toString();
         const paragraph = document.createElement(P);
-        paragraph.classList.add(CONTENT_PARAGRAPH);
+        paragraph.classList.add(CONTENT_PARAGRAPH_CLASS);
         this.insertTextToElement(paragraph, ingredients);
         ingredientsWrapper.appendChild(paragraph);
     };

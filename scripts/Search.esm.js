@@ -76,9 +76,9 @@ export class Search extends Common {
             const wishItem = this.details;
             if (!this.checkDoubleValue(wishItems, wishItem)) {
                 wishItems.push(wishItem);
-            }
+            };
             localStorage.setItem('wish', JSON.stringify(wishItems));
-        }
+        };
     };
 
     checkDoubleValue(elements, element) {
@@ -95,7 +95,7 @@ export class Search extends Common {
         value ? this.inputElement.placeholder = SUCCEED_TXT : this.inputElement.placeholder = FAILED_TXT;
         this.inputElement.value = '';
         this.loupe.style.color = WHITE;
-    }
+    };
 
     eventHandlers() {
         this.inputElement.addEventListener('keyup', () => this.getInputText());
@@ -104,7 +104,7 @@ export class Search extends Common {
 
     changeLoupeColor(value) {
         value ? this.loupe.style.color = RED : this.loupe.style.color = WHITE;
-    }
+    };
 }
 
 export const search = new Search();

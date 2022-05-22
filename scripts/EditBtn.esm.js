@@ -73,8 +73,8 @@ export class EditBtn extends Common {
         } else {
             this.saveBtn.style.visibility = 'visible';
             this.deleteBtn.style.visibility = 'visible';
-        }
-    }
+        };
+    };
     
     getPreparation() {
         const preparation = this.random.randomRecipesDetails[this.number].strInstructions;
@@ -83,32 +83,32 @@ export class EditBtn extends Common {
     myChanges() {
         const myChanges = this.preparation.textContent;
         return this.noWhiteSpaces(myChanges); 
-    }
+    };
 
     noWhiteSpaces(value) {
         return value.replace(/\s/g, "");
-    }
+    };
 
     compareChanges() {
         return (this.getPreparation() === this.myChanges());
-    }
+    };
     
     saveChangedPreparation() {
         if (!this.compareChanges()) {
             this.saveMyChanges()
         } else {
             return;
-        }
-    }
+        };
+    };
 
     saveMyChanges() {
         this.random.randomRecipesDetails[this.number].strInstructions = this.preparation.textContent;
         localStorage.setItem('array', JSON.stringify(this.random.randomRecipesDetails));
-    }
+    };
 
     eventHandlers() {
         this.preparation.addEventListener('mousedown', () => this.prepareToEdit());
         this.mainContent.addEventListener('click', () => this.removeBorder())
         this.editBtn.addEventListener('click', () => this.prepareToEdit())
     };
-}
+};

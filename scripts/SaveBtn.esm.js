@@ -47,7 +47,7 @@ export class SaveBtn extends Common {
             this.setItem();    
         };
         items.push(details);
-    }
+    };
     
     setItem() {
         localStorage.setItem('wish', JSON.stringify(this.random.oldItems));

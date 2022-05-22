@@ -5,23 +5,24 @@ import {
     random
 } from "./random.esm.js";
 import {
-    myList
+    myList,
 } from "./MyList.esm.js";
+const WISH_ID = 'wish';
 
-export const HEADER_BTN_ID = 'headerBtn';
+export const HEADER_BTN_ID = 'headerOpenBtn';
 
 class HeaderBtn extends Common {
     constructor() {
         super();
+        this.wish = this.bindElement(WISH_ID);
         this.random = random;
         this.createButton();
         this.eventHandler();
-        this.showHideBtn();
     };
     createButton() {
         this.headerBtn = this.bindElement(HEADER_BTN_ID);
     };
-    
+
     showHideBtn() {
         if (!this.random.oldItems) return;
         if (this.random.oldItems) {
@@ -33,13 +34,14 @@ class HeaderBtn extends Common {
     };
 
     eventHandler() {
-        this.headerBtn.addEventListener('click', () => this.showWishList())
+        this.headerBtn.addEventListener('click', this.showWishList);
+      
     };
 
-    showWishList() {
+    showWishList = () =>  {
         this.myList = myList;
         this.myList.createWishList();
     };
 };
 
-export const headerBtn = new HeaderBtn();
+export const headerBtn = new HeaderBtn()

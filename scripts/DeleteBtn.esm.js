@@ -46,8 +46,7 @@ export class DeleteBtn extends Common {
         let element = document.getElementById(`FrontId-${this.number}`);
         element.remove();
         this.changeFrontIdAttribute();
-    }
-
+    };
 
     changeValuesInStorage(value) {
         console.log(value)
@@ -60,5 +59,5 @@ export class DeleteBtn extends Common {
         elements.forEach((element, i) => {
             element.setAttribute('id', `FrontId-${i}`);
         })
-    }
-}
+    };
+};

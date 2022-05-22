@@ -1,10 +1,8 @@
 import { Common } from "./Common.esm.js";
-
 import { mainRecipe } from "./MainRecipe.esm.js";
 
 const WISH_ID = 'wish';
 const WISH_BTN_ID = 'wishBtn';
-
 
 export class WishList extends Common{
     constructor() {
@@ -16,8 +14,7 @@ export class WishList extends Common{
     }
 
     displayWishList() {
-        this.wish.style.display = 'block';
-        
+        this.wish.style.display = 'block';        
     }
     
     closeWishList() {
@@ -27,7 +24,7 @@ export class WishList extends Common{
 
     eventHandler() {
         this.closeBtn.addEventListener('click',  () => this.closeWishList());
-    }
+    };
 };
 
 

@@ -25,7 +25,6 @@ export class Recipes extends Common {
         this.createRandomRecipes(RECIPES_AMOUNT);
         this.createNrOfIdFrontRecipe();
         this.headings = this.getHeadingsElements();
-        
     };
     
     getHeadingsElements() {
@@ -63,7 +62,6 @@ export class Recipes extends Common {
             frontIcon,
             frontParagraph,
         } = this.frontRecipe;
-        
         const front = this.recipes.appendChild(recipeFront);
         front.appendChild(frontHeading); 
         const btn = front.appendChild(frontBtn);
@@ -74,20 +72,21 @@ export class Recipes extends Common {
     
     getDishName(element, dishName) {
         element.textContent = dishName;
-    }
+    };
     
     getRandomDetails(detail) {
         this.randomRecipesDetails.push(detail);
         
-    }
+    };
+
     getName(element) {
         this.dishName.push(element);
         if (this.dishName.length === RECIPES_AMOUNT) {
             for (let i = 0; i < RECIPES_AMOUNT; i++){
-                this.displayDishName(this.headings[i] ,this.dishName[i])
-            }
-        }
-    }
+                this.displayDishName(this.headings[i], this.dishName[i]);
+            };
+        };
+    };
 
     displayDishName(element, name) {
         element.textContent = name;

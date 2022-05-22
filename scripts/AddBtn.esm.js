@@ -122,7 +122,7 @@ class AddBtn extends Common {
             this.changeHtmlElement();
             element.value = '';
         };
-    }
+    };
 
     clearHtmlElement(element) {
         element.remove();

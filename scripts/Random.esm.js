@@ -7,7 +7,7 @@ import {
 export const RECIPES_AMOUNT = 1;
 export const URL = 'https://themealdb.com/api/json/v1/1/random.php';
 
-const HEADER_BTN_ID = 'headerBtn';
+const HEADER_BTN_ID = 'headerOpenBtn';
 
 export class Random extends Common {
     constructor() {

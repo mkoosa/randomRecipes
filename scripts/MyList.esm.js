@@ -7,9 +7,6 @@ import {
 import {
     mainRecipe
 } from "./MainRecipe.esm.js";
-import {
-    headerBtn
-} from "./HeaderBtn.esm.js";
 
 import {
     DeleteBtn
@@ -23,11 +20,11 @@ import {
     recipes
 } from "./Recipes.esm.js";
 
+const HEADER_BTN_CLOSE_ID = 'headerCloseBtn';
+const HEADER_BTN_OPEN_ID = 'headerOpenBtn';
 const WISH_ID = 'wish';
-const WISH_BTN_ID = 'wishBtn';
 const UL = 'ul';
 const LI = 'li';
-const UL_CLASS = 'wish__list';
 const UL_CLASSES = ['wish__list', 'container-fluid', 'd-flex',
     'flex-column', 'justify-content-evenly', 'align-items-center', 'flex-wrap', 'py-3', 'active'
 ];
@@ -37,30 +34,30 @@ const LI_ATTRIBUTE = 'data'
 export class MyList extends Common {
     constructor() {
         super();
+        this.headerCloseBtn = this.bindElement(HEADER_BTN_CLOSE_ID);
+        this.headerOpenBtn = this.bindElement(HEADER_BTN_OPEN_ID);
         this.wish = this.bindElement(WISH_ID);
-        this.closeBtn = this.bindElement(WISH_BTN_ID);
         this.mainRecipe = mainRecipe;
         this.frontRecipe = mainRecipe.frontRecipe;
         this.openedRecipe = openedRecipe;
-        this.headerBtn = headerBtn;
         this.recipes = recipes;
         this.listElements = [];
-        this.eventHandler();
     };
 
     displayWishList() {
+        this.wish.classList.add('active');
+        this.headerOpenBtn.style.display = 'none';
+        this.headerCloseBtn.style.display = 'block';
         this.getDetails();
-        this.wish.style.display = 'block';
+        this.headerCloseBtn.addEventListener('click', () => this.closeWishList());
     };
-
+    
     closeWishList() {
-        this.wish.style.display = 'none';
+        this.wish.classList.remove('active');
+        this.headerOpenBtn.style.display = 'block';
+        this.headerCloseBtn.style.display = 'none';
+        this.headerOpenBtn.addEventListener('click', () => this.displayWishList());
         this.ulList.remove();
-        this.showHideBtn()
-    };
-
-    eventHandler() {
-        this.closeBtn.addEventListener('click', () => this.closeWishList());
     };
 
     getDetails() {
@@ -71,7 +68,6 @@ export class MyList extends Common {
         this.displayWishList();
         this.ulList = document.createElement(UL);
         this.frontRecipe.createClassesInElement(this.ulList, UL_CLASSES);
-
         this.wish.appendChild(this.ulList);
         for (let i = 0; i < this.details.length; i++) {
             this.listElement = this.frontRecipe.createHtmlElement(LI, LI_CLASS);
@@ -79,14 +75,8 @@ export class MyList extends Common {
             this.ulList.appendChild(this.listElement).textContent = this.details[i].strMeal;
             this.listElements.push(this.listElement);
         };
-        this.getAttribute();
-        this.moveDownList();
+        this.getAttribute();  
     };
-
-    moveDownList() {
-        this.wish.classList.add('active');
-    }
-
 
     getAttribute() {
         const liElements = [...document.getElementsByClassName(LI_CLASS)];
@@ -106,7 +96,6 @@ export class MyList extends Common {
         this.openedRecipe.closeRecipe();
         this.deleteBtn = new DeleteBtn(this.target);
         this.editBtn = new EditBtn(this.target);
-        this.hideSaveBtn();
         this.fitMethodToDeleteBtn(this.deleteBtn);
         this.fitMethodToEditBtn(this.editBtn);
     };
@@ -137,18 +126,6 @@ export class MyList extends Common {
 
     removeHtmlElement() {
         return
-    };
-
-    showHideBtn() {
-        if (!this.details.length) {
-            this.headerBtn.headerBtn.style.display = 'none'
-        } else {
-            this.headerBtn.headerBtn.style.display = 'block'
-        };
-    };
-
-    hideSaveBtn() {
-        this.mainRecipe.saveBtn.style.display = 'none';
     };
 };
 

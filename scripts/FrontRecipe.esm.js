@@ -2,7 +2,6 @@ const FRONT_HEADING_CLASS = 'front__heading';
 const FRONT_ICONS_CLASSES = ['fa-solid', 'fa-arrow-up-right-from-square'];
 const FRONT_PARAGRAPH_CLASS = 'front__paragraph';
 
-
 export const FRONT_BTN_CLASS = 'front__button';
 export const FRONT_BTN_ID = 'frontBtn'
 export const FRONT_CLASS = 'front';
