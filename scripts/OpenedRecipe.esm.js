@@ -80,6 +80,7 @@ export class OpenedRecipe extends Common {
     };
 
     elementsToDisplay(element) {
+        console.log(element);
         this.insertContentToElements(this.mainRecipe.headerHeading, element.strMeal);
         this.insertContentToElements(this.mainRecipe.secondBottomParagraph, element.strInstructions);
         this.insertImageToElement(this.mainRecipe.contentImg, element.strMealThumb);

@@ -12,6 +12,10 @@ import {
     Picture
 } from "./Picture.ems.js";
 
+import {
+    openedRecipe
+} from "./OpenedRecipe.esm.js";
+
 const DIV = 'div';
 const FORM = 'form';
 const LABEL = 'label'
@@ -26,7 +30,6 @@ const FORM_CLASS = 'myRecipe__form';
 const LABEL_CLASS = 'myRecipe__label';
 const INPUT_CLASS = 'myRecipe__input';
 const P_CLASS = 'myRecipe__btn';
-
 const ADD_CLASS = 'myRecipe__AddBtn';
 const ICON__CLASSES = ['fa-solid', 'fa-square-check'];
 const CLOSE_ICON_CLASSES = ['fa-solid', 'fa-x', 'myRecipe__close']
@@ -46,6 +49,7 @@ class AddBtn extends Common {
         this.wrapper = this.bindElement(WRAPPER_ID);
         this.descriptions = ['name of dish', 'INGREDIENTS', 'Preparation:', 'add image'];
         this.mainRecipe = mainRecipe;
+        this.openedRecipe = openedRecipe;
         this.addButton.addEventListener('click', () => this.openMyRecipeForm());
     };
 
@@ -62,7 +66,6 @@ class AddBtn extends Common {
         this.label.textContent = this.descriptions[this.target];
         this.p = this.mainRecipe.frontRecipe.createHtmlElement(P, P_CLASS);
         this.mainRecipe.createIdAttribute(this.p, ADD_BTN_ID)
-
         this.icon = document.createElement(ICON);
         this.p.textContent = SAVE;
         this.mainRecipe.frontRecipe.createClassesInElement(this.icon, ICON__CLASSES);
@@ -91,10 +94,10 @@ class AddBtn extends Common {
             return
         };
         this.prepareCorrectForm();
-        console.log(this.target)
         if (this.target === this.descriptions.length - 1) {
             console.log('image');
             this.saveImage();
+
             return;
         }
         this.textArea = this.mainRecipe.frontRecipe.createHtmlElement(TEXT_AREA, TEXTAREA_CLASS);
@@ -109,6 +112,14 @@ class AddBtn extends Common {
         this.p.addEventListener('click', () => this.picture.prepareImageToSave());
     };
 
+    displayMyDishCard() {
+        this.myDish.saveInStorage(this.myDish.createObj());
+        this.openedRecipe.openRecipe(this.myDish);
+        this.openedRecipe.closeButton();
+        this.openedRecipe.closeRecipe();
+
+    };
+
     prepareInputImg() {
         this.inputImg = this.mainRecipe.frontRecipe.createHtmlElement(INPUT, ADD_CLASS);
         this.mainRecipe.createIdAttribute(this.inputImg, MY_RECIPE_IMG_ID)
@@ -118,7 +129,6 @@ class AddBtn extends Common {
     };
 
     displayCorrectForm(element) {
-        console.log('save')
         this.fillMyDish(this.target, element.value)
         if (this.isValueEmpty(element)) {
             this.myRecipe.remove();
@@ -134,10 +144,12 @@ class AddBtn extends Common {
     closeForm() {
         this.myRecipe.remove();
         this.target = 0;
+        setTimeout(() => {
+            this.displayMyDishCard(this.myDish);
+        }, 1000);
     };
 
     fillMyDish(target, value) {
-        console.log(target, value);
         switch (target) {
             case 0:
                 this.myDish.setName = value;
@@ -148,6 +160,7 @@ class AddBtn extends Common {
             case 2:
                 this.myDish.setInstructions = value;
                 break;
+
         };
     };
 };

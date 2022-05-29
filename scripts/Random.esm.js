@@ -44,7 +44,7 @@ export class Random extends Common {
     createStorage(el) {
         this.randomRecipesDetails.push(el);
         if (this.randomRecipesDetails.length === RECIPES_AMOUNT) {
-            localStorage.setItem('array', JSON.stringify(this.randomRecipesDetails))
+            localStorage.setItem('array', JSON.stringify(this.randomRecipesDetails));
             this.randomRecipesDetails.forEach(el => {
                 this.recipes.getRandomDetails(el);
                 this.recipes.getName(el.strMeal);

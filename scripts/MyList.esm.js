@@ -89,6 +89,7 @@ export class MyList extends Common {
     };
 
     openRecipe(target) {
+        console.log(target);
         this.target = target;
         const recipe = this.details[this.target];
         this.openedRecipe.openRecipe(recipe);

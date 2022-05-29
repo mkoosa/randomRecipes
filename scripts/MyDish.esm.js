@@ -1,53 +1,64 @@
+import {
+    random
+} from "./random.esm.js";
+
 export class MyDish {
     constructor(strMeal, strIngredient, strInstructions, strMealThumb) {
-        this._strMeal = strMeal;
-        this._strIngredient = strIngredient;
-        this._strInstructions = strInstructions;
-        this._strMealThumb = strMealThumb;
+        this.strMeal = strMeal;
+        this.strIngredient = strIngredient;
+        this.strInstructions = strInstructions;
+        this.strMealThumb = strMealThumb;
+        this.random = random;
     };
 
     get getName() {
-        return this._strMeal;
+        return this.strMeal;
     };
 
     set setName(newValue) {
-        this._strMeal = newValue;
+        this.strMeal = newValue;
     };
 
-
     get getIngredients() {
-        return this._strIngredient;
+        return this.strIngredient;
     };
 
     set setIngredients(newValue) {
-        this._strIngredient = newValue;
-    }
-
-
-    get getInstructions() {
-        return this._strInstructions;
+        this.strIngredient = newValue;
     };
 
+    get getInstructions() {
+        return this.strInstructions;
+    };
 
     set setInstructions(newValue) {
-        this._strInstructions = newValue;
+        this.strInstructions = newValue;
     };
 
     get getImagePath() {
-        return this._strMealThumb
+        return this.strMealThumb
     };
 
     set setImagePath(newValue) {
-        this._strMealThumb = newValue;
+        this.strMealThumb = newValue;
+    };
+
+    createObj() {
+        return {
+            strMeal: this.strMeal,
+            strIngredient: this.strIngredient,
+            strInstructions: this.strInstructions,
+            strMealThumb: this.strMealThumb,
+        };
+    };
+
+    saveInStorage(element) {
+        if (!element) {
+            throw new Error(`${element} doesn't exist`)
+        };
+        this.random.randomRecipesDetails.push(element);
+        localStorage.setItem('array', JSON.stringify(this.random.randomRecipesDetails));
+        console.log(this.random.randomRecipesDetails);
     };
 
 };
-
-
-
-
-
-
-
-
-

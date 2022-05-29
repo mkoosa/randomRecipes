@@ -31,10 +31,10 @@ export class Picture extends Common {
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(e.target, 0, 0, canvas.width, canvas.height);
                 const resizedImage = ctx.canvas.toDataURL(e.target, 'image/jpeg');
-                this.urlResizedImage = `url(${resizedImage})`;
-                console.log(this.urlResizedImage);
-            }
-        }
+                this.urlResizedImage = resizedImage;
+                this.addBtn.myDish.setImagePath = this.urlResizedImage;
+            };
+        };
         this.addBtn.closeForm();
     };
 };
