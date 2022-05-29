@@ -18,27 +18,28 @@
 
 <body>
     <div class="wrapper " id="wrapperId">
-        <header class="header container-fluid row d-flex justify-content-around align-items-center mx-2">
-            <div class="header__wish" id="wish">     
+        <header class="header container-fluid row d-flex justify-content-start align-items-center mx-2">
+            <div class="header__wish" id="wish">
             </div>
             <div
-            class="header__left col-12 text-center col-md-9 row pb-md-5 py-md-3 d-md-flex justify-content-md-between">
-            <h1 class="header__heading text-uppercase py-3 col-12 col-md-5 text-light">random recipe box</h1>
-            <div class="header__add-wrapper mb-3 col-12 col-md-3 pb-3">
-                <button type="button" class="header__button btn btn-light" id="addBtn">Add</button>
+                class="header__left col-12 text-center col-md-9 row pb-md-5 py-md-3 d-md-flex">
+                <h1 class="header__heading text-uppercase py-3 col-12 col-md-5 text-light">random recipe box</h1>
+                <div class="header__add-wrapper mb-3 col-12 col-md-3 pb-3">
+                    <button type="button" class="header__button btn btn-light" id="addBtn">Add</button>
+                </div>
+                <div
+                    class="header__form-wrapper col-12 mb-4 col-md-3 d-flex justify-content-start justify-content-md-end">
+                    <input type="text" placeholder="search recipe" class="header__input align-self-end"
+                        id="searchInput">
+                    <i class="fa-solid fa-magnifying-glass pt-5" id="loupe"></i>
+                </div>
             </div>
-            <div
-            class="header__form-wrapper col-12 mb-4 col-md-4 d-flex justify-content-center justify-content-md-end">
-            <input type="text" placeholder="search recipe" class="header__input align-self-end"
-            id="searchInput">
-            <i class="fa-solid fa-magnifying-glass pt-5" id="loupe"></i>
-        </div>
-    </div>
-    <div class="header__right col-12 col-md-3 d-flex justify-content-center align-items-center">
-        <button type="button" class="header__button-open btn btn-light btn-light--red" id="headerOpenBtn">Open</button>
-        <button type="button" class="header__button-close btn btn-light btn-light--red"
-            id="headerCloseBtn">Close</button>
-                <div class="header__image-wrapper mx-5 p-3">
+            <div class="header__right col-8 col-md-1 d-flex justify-content-center align-items-center">
+                <button type="button" class="header__button-open btn btn-light btn-light--red me-5"
+                    id="headerOpenBtn">Open</button>
+                <button type="button" class="header__button-close btn btn-light btn-light--red me-5"
+                    id="headerCloseBtn">Close</button>
+                <div class="header__image-wrapper mx-5 p-3 d-none d-md-block">
                     <img src="images/silverware-ga82b8284b_1280.png" alt="dishes" class="header__img img-fluid">
                 </div>
             </div>

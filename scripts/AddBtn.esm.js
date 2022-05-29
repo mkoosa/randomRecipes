@@ -97,7 +97,6 @@ class AddBtn extends Common {
         if (this.target === this.descriptions.length - 1) {
             console.log('image');
             this.saveImage();
-
             return;
         }
         this.textArea = this.mainRecipe.frontRecipe.createHtmlElement(TEXT_AREA, TEXTAREA_CLASS);

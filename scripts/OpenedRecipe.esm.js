@@ -23,17 +23,21 @@ import {
 import {
     EditBtn
 } from "./EditBtn.esm.js";
+
 export const KEY_STORAGE = 'array';
 
+const BLUR_CLASS = 'blur';
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
 const INGREDIENTS_TXT = 'ingredients';
 const ID = 'id';
+const WRAPPER_ID = 'wrapperId'
 
 export class OpenedRecipe extends Common {
     constructor() {
         super();
         this.openButtons = this.openButtons();
+        this.wrapper = this.bindElement(WRAPPER_ID);
         this.mainRecipe = mainRecipe;
         this.clickEvents();
     }
@@ -61,6 +65,8 @@ export class OpenedRecipe extends Common {
         });
     };
 
+
+
     numberOfElementToDisplay(element) {
         element = Number(element[element.length - 1]);
         this.getDetailsToDisplay(element);
@@ -72,15 +78,20 @@ export class OpenedRecipe extends Common {
     };
 
     openRecipe(element) {
+        this.activeBlur(this.wrapper);
         this.mainRecipe.createMainRecipeHTMLElements();
         this.mainRecipe.createRecipeToOpen();
         this.main = this.bindElement(MAIN_ID);
         this.displayIngredients(element);
         this.elementsToDisplay(element);
+        
     };
 
+    activeBlur(element) {
+        element.classList.add(BLUR_CLASS);
+    }
+
     elementsToDisplay(element) {
-        console.log(element);
         this.insertContentToElements(this.mainRecipe.headerHeading, element.strMeal);
         this.insertContentToElements(this.mainRecipe.secondBottomParagraph, element.strInstructions);
         this.insertImageToElement(this.mainRecipe.contentImg, element.strMealThumb);
@@ -103,7 +114,9 @@ export class OpenedRecipe extends Common {
     closeRecipe() {
         this.closeBtn.addEventListener('click', () => {
             this.main.remove();
+            this.wrapper.classList.remove(BLUR_CLASS);
         });
+        
     };
 
     displayIngredients(element) {

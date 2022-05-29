@@ -57,7 +57,6 @@ export class EditBtn extends Common {
     };
     
     removeBorder() {
-        console.log(this)
         this.preparation.style.border = 'none';
         this.flag = false;
         this.textBtn.textContent = 'edit'
