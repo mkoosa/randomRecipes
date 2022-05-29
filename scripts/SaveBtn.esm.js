@@ -33,6 +33,7 @@ export class SaveBtn extends Common {
     };
     
     saveItemInStorage() {
+        console.log('save', this.number);
         this.headerBtn.headerBtn.style.display = 'block';
         let details = this.random.randomRecipesDetails[this.number];
 

@@ -2,6 +2,14 @@ import {
     random
 } from "./random.esm.js";
 
+import {
+    SaveBtn
+} from "./SaveBtn.esm.js";
+
+import {
+    EditBtn
+} from "./EditBtn.esm.js";
+
 export class MyDish {
     constructor(strMeal, strIngredient, strInstructions, strMealThumb) {
         this.strMeal = strMeal;
@@ -59,6 +67,11 @@ export class MyDish {
         this.random.randomRecipesDetails.push(element);
         localStorage.setItem('array', JSON.stringify(this.random.randomRecipesDetails));
         console.log(this.random.randomRecipesDetails);
+        this.number = this.random.randomRecipesDetails.length;
     };
 
+    activateButtons() {
+        this.saveBtn = new SaveBtn(this.number - 1);
+        this.editBtn = new EditBtn(this.number - 1);
+    }
 };

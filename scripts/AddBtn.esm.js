@@ -116,6 +116,8 @@ class AddBtn extends Common {
         this.myDish.saveInStorage(this.myDish.createObj());
         this.openedRecipe.openRecipe(this.myDish);
         this.openedRecipe.closeButton();
+        this.myDish.activateButtons();
+
         this.openedRecipe.closeRecipe();
 
     };
@@ -160,7 +162,6 @@ class AddBtn extends Common {
             case 2:
                 this.myDish.setInstructions = value;
                 break;
-
         };
     };
 };
