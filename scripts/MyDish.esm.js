@@ -66,7 +66,6 @@ export class MyDish {
         };
         this.random.randomRecipesDetails.push(element);
         localStorage.setItem('array', JSON.stringify(this.random.randomRecipesDetails));
-        console.log(this.random.randomRecipesDetails);
         this.number = this.random.randomRecipesDetails.length;
     };
 

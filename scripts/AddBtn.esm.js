@@ -110,6 +110,7 @@ class AddBtn extends Common {
         this.form.appendChild(this.prepareInputImg());
         this.picture = new Picture();
         this.p.addEventListener('click', () => this.picture.prepareImageToSave());
+        this.flag = true;
     };
 
     displayMyDishCard() {
@@ -146,9 +147,13 @@ class AddBtn extends Common {
     closeForm() {
         this.myRecipe.remove();
         this.target = 0;
-        setTimeout(() => {
-            this.displayMyDishCard(this.myDish);
-        }, 1000);
+        if (this.flag) {
+            
+            setTimeout(() => {
+                this.displayMyDishCard(this.myDish);
+            }, 1000);
+        };
+        this.flag = !this.flag;
     };
 
     fillMyDish(target, value) {
