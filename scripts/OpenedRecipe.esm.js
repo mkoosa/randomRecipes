@@ -27,17 +27,21 @@ import {
 export const KEY_STORAGE = 'array';
 
 const BLUR_CLASS = 'blur';
+const VISIBLE_CLASS = 'visible';
+const SHOW_SPINNERS_CLASS = 'showSpinner';
 const FRONT_BTN_ID = '#frontBtn';
 const PREPARATION_TXT = 'Preparation:';
 const INGREDIENTS_TXT = 'ingredients';
 const ID = 'id';
 const WRAPPER_ID = 'wrapperId'
+const SPINNERS_ID = 'spinners';
 
 export class OpenedRecipe extends Common {
     constructor() {
         super();
         this.openButtons = this.openButtons();
         this.wrapper = this.bindElement(WRAPPER_ID);
+        this.spinners = this.bindElement(SPINNERS_ID);
         this.mainRecipe = mainRecipe;
         this.clickEvents();
     }
@@ -65,8 +69,6 @@ export class OpenedRecipe extends Common {
         });
     };
 
-
-
     numberOfElementToDisplay(element) {
         element = Number(element[element.length - 1]);
         this.getDetailsToDisplay(element);
@@ -84,12 +86,38 @@ export class OpenedRecipe extends Common {
         this.main = this.bindElement(MAIN_ID);
         this.displayIngredients(element);
         this.elementsToDisplay(element);
-        
+        this.setTimeouts();
+    };
+
+    setTimeouts() {
+        setTimeout(() => {
+            this.activeVisible(this.main);
+        }, 2000);
+
+        setTimeout(() => {
+            this.activeSpinners(this.spinners);
+        }, 100);
+
+        setTimeout(() => {
+            this.deactivateSpinners(this.spinners);
+        }, 1900);
+    };
+
+    activeSpinners(element) {
+        element.classList.add(SHOW_SPINNERS_CLASS);
+    };
+
+    deactivateSpinners(element) {
+        element.classList.remove(SHOW_SPINNERS_CLASS);
+    };
+
+    activeVisible(element) {
+        element.classList.add(VISIBLE_CLASS);
     };
 
     activeBlur(element) {
         element.classList.add(BLUR_CLASS);
-    }
+    };
 
     elementsToDisplay(element) {
         this.insertContentToElements(this.mainRecipe.headerHeading, element.strMeal);
@@ -116,7 +144,6 @@ export class OpenedRecipe extends Common {
             this.main.remove();
             this.wrapper.classList.remove(BLUR_CLASS);
         });
-        
     };
 
     displayIngredients(element) {

@@ -16,8 +16,6 @@ export class Storage {
     
     createNewStorageItems(key, element) {
         localStorage.setItem(key, JSON.stringify(element));
-
-        
     };
 };
 

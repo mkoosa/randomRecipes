@@ -72,5 +72,5 @@ export class MyDish {
     activateButtons() {
         this.saveBtn = new SaveBtn(this.number - 1);
         this.editBtn = new EditBtn(this.number - 1);
-    }
+    };
 };
