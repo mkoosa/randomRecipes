@@ -17,12 +17,16 @@ import {
 
 import { KEY_STORAGE } from "./OpenedRecipe.esm.js";
 
+const WRAPPER_ID = 'wrapperId';
+const BLUR_CLASS = 'blur';
+
 export class DeleteBtn extends Common {
     constructor(number) {
         super()
         let deleteBtn = null;
         this.random = random;
         this.number = number;
+        this.wrapper = this.bindElement(WRAPPER_ID);
         this.main = this.bindElement(MAIN_ID);
         this.openedRecipe = openedRecipe;
         this.getDeleteBtn(deleteBtn, DELETE_BTN_ID);
@@ -34,12 +38,14 @@ export class DeleteBtn extends Common {
 
     };
     removeRecipe() {
+
         let recipes = this.random.randomRecipesDetails;
 
         recipes.splice(this.number, 1);
         this.changeValuesInStorage(recipes);
         this.main.remove();
         this.removeHtmlElement();
+        this.removeBlur();
     };
 
     removeHtmlElement() {
@@ -59,5 +65,8 @@ export class DeleteBtn extends Common {
         elements.forEach((element, i) => {
             element.setAttribute('id', `FrontId-${i}`);
         })
+    };
+    removeBlur() {
+        this.wrapper.classList.remove(BLUR_CLASS);
     };
 };
