@@ -12,7 +12,7 @@ import {
 } from "./MainRecipe.esm.js";
 import {
     random
-} from "./random.esm.js";
+} from "./Random.esm.js";
 
 export class EditBtn extends Common {
     constructor(number) {

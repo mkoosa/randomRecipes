@@ -3,7 +3,7 @@ import {
 } from "./Common.esm.js";
 import {
     random
-} from "./random.esm.js";
+} from "./Random.esm.js";
 import {
     myList,
 } from "./MyList.esm.js";

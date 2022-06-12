@@ -1,6 +1,9 @@
 const FRONT_HEADING_CLASS = 'front__heading';
 const FRONT_ICONS_CLASSES = ['fa-solid', 'fa-arrow-up-right-from-square'];
 const FRONT_PARAGRAPH_CLASS = 'front__paragraph';
+const FRONT_IMG_WRAPPER_CLASS = 'front__image-wrapper';
+const FRONT_IMG_CLASS = 'front__image';
+
 
 export const FRONT_BTN_CLASS = 'front__button';
 export const FRONT_BTN_ID = 'frontBtn'
@@ -23,6 +26,12 @@ export class FrontRecipe {
         // this.recipeFront = this.createHtmlElement(DIV, FRONT_CLASS);
         this.recipeFront = document.createElement(DIV);
         this.createClassesInElement(this.recipeFront, FRONT_CLASSES);         
+
+        this.imgWrapper = document.createElement(DIV);
+        this.imgWrapper.classList.add(FRONT_IMG_WRAPPER_CLASS);
+        this.frontImage = document.createElement(IMAGE);
+        this.frontImage.classList.add(FRONT_IMG_CLASS);
+
         this.frontHeading = this.createHtmlElement(H2, FRONT_HEADING_CLASS);
         this.frontBtn = this.createHtmlElement(DIV, FRONT_BTN_CLASS);
         this.frontBtn.setAttribute(ID, FRONT_BTN_ID);

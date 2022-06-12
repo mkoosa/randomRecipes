@@ -67,7 +67,6 @@ export class MainRecipe{
         this.mainContent = this.frontRecipe.createHtmlElement(DIV, MAIN_CONTENT_CLASS);
         this.contentWrapper = this.frontRecipe.createHtmlElement(DIV, CONTENT_WRAPPER_CLASS);
         this.contentHeading = this.frontRecipe.createHtmlElement(H3_ELEMENT, CONTENT_HEADING_CLASS);
-        this.contentParagraph = this.frontRecipe.createHtmlElement(P, CONTENT_PARAGRAPH_CLASS);
         this.contentImg = document.createElement(IMAGE);
         this.frontRecipe.createClassesInElement(this.contentImg, CONTENT_IMG_CLASSES);
         this.contentBottom = this.frontRecipe.createHtmlElement(DIV, BOTTOM_CLASS);
@@ -102,7 +101,6 @@ export class MainRecipe{
         mainContent.appendChild(this.contentImg);
         const contentWrapper = mainContent.appendChild(this.contentWrapper);
         contentWrapper.appendChild(this.contentHeading);
-        contentWrapper.appendChild(this.contentParagraph);
         const contentBottom = this.mainRecipe.appendChild(this.contentBottom);
         contentBottom.appendChild(this.bottomParagraph);
         contentBottom.appendChild(this.secondBottomParagraph);

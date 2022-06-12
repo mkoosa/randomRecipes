@@ -11,7 +11,7 @@ import {
     random,
     RECIPES_AMOUNT,
 
-} from "./random.esm.js";
+} from "./Random.esm.js";
 
 const RECIPES_ID = 'recipes';
 
@@ -57,12 +57,17 @@ export class Recipes extends Common {
         this.frontRecipe = new FrontRecipe();
         const {
             recipeFront,
+            imgWrapper,
+            frontImage,
             frontHeading,
             frontBtn,
             frontIcon,
             frontParagraph,
         } = this.frontRecipe;
         const front = this.recipes.appendChild(recipeFront);
+        front.appendChild(imgWrapper);
+        imgWrapper.appendChild(frontImage);
+        frontImage.src = 'images/question-mark-350169_1280.png';
         front.appendChild(frontHeading); 
         const btn = front.appendChild(frontBtn);
         btn.appendChild(frontIcon);

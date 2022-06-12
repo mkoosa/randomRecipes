@@ -10,7 +10,7 @@ import {
 
 import {
     random
-} from "./random.esm.js";
+} from "./Random.esm.js";
 
 const SEARCH_INPUT_ID = 'searchInput';
 const LOUPE_ID = 'loupe';

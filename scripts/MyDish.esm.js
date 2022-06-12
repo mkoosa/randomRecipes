@@ -1,6 +1,6 @@
 import {
     random
-} from "./random.esm.js";
+} from "./Random.esm.js";
 
 import {
     SaveBtn

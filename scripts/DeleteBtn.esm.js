@@ -13,7 +13,7 @@ import {
 } from "./MainRecipe.esm.js";
 import {
     random
-} from "./random.esm.js";
+} from "./Random.esm.js";
 
 import { KEY_STORAGE } from "./OpenedRecipe.esm.js";
 
